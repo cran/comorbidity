@@ -1,3 +1,9 @@
+# comorbidity 0.1.0
+
+* Added support for the ICD-9-CM version of Charlson and Elixhauser scores
+* Added vignette with information on the scores computed by `comorbidity`
+* `sample_diag_icd10()` function renamed back to `sample_diag()`, as now can simulate ICD-9-CM codes too
+
 # comorbidity 0.0.3
 
 * Added datasets `icd10_2009` and `icd10_2011` with ICD-10 codes, 2009 and 2011 versions (respectively)
@@ -16,7 +22,7 @@
 # charlson 0.0.1
 
 * Rebooted `charlson` using only base R functions
-* Added a `NEWS.md` file to track changes to the package.
+* Added a `NEWS.md` file to track changes to the package
 * Added CI with Travis and AppVeyor
 * Added automated testing with `testthat`
 * Added code coverage with Codecov

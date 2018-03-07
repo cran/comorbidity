@@ -1,25 +1,30 @@
 Type: Package
 Package: comorbidity
-Version: 0.0.3
+Version: 0.1.0
 Title: Computing Comorbidity Scores
 Description: Computing comorbidity scores such as the weighted Charlson score
   (Charlson, 1987 <doi:10.1016/0021-9681(87)90171-8>) and the Elixhauser
   comorbidity score (Elixhauser, 1998 <doi:10.1097/00005650-199801000-00004>)
-  using ICD-10 codes (Quan, 2005 <doi:10.1097/01.mlr.0000182534.19832.83>).
-Authors@R: person("Alessandro", "Gasparini", email = "ag475@leicester.ac.uk",
-  role = c("aut", "cre"))
-URL: https://github.com/ellessenne/charlson
-BugReports: https://github.com/ellessenne/charlson/issues
+  using ICD-9-CM or ICD-10 codes (Quan, 2005 <doi:10.1097/01.mlr.0000182534.19832.83>).
+Authors@R: c(
+  person(given = "Alessandro", family = "Gasparini", role = c("aut", "cre"), email = "ag475@leicester.ac.uk"),
+  person(given = "Hojjat", family = "Salmasian", role = "ctb", email = "hsalmasian@bwh.harvard.edu", comment = "ICD-9-CM scores")
+  )
+Maintainer: Alessandro Gasparini <ag475@leicester.ac.uk>
+URL: https://github.com/ellessenne/comorbidity
+BugReports: https://github.com/ellessenne/comorbidity/issues
 License: GPL (>= 3)
 Depends: R (>= 2.10)
-Imports: checkmate, parallel, stats
-Suggests: knitr, testthat, covr
+Imports: checkmate, parallel
+Suggests: covr, knitr, rmarkdown, testthat
 RoxygenNote: 6.0.1
 Encoding: UTF-8
 LazyData: true
+ByteCompile: true
+VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2018-01-06 10:47:28 UTC; ellessenne
-Author: Alessandro Gasparini [aut, cre]
-Maintainer: Alessandro Gasparini <ag475@leicester.ac.uk>
+Packaged: 2018-03-07 22:22:24 UTC; ellessenne
+Author: Alessandro Gasparini [aut, cre],
+  Hojjat Salmasian [ctb] (ICD-9-CM scores)
 Repository: CRAN
-Date/Publication: 2018-01-08 13:59:11 UTC
+Date/Publication: 2018-03-07 22:31:27 UTC
