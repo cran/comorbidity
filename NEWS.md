@@ -1,3 +1,8 @@
+# comorbidity 0.1.1
+
+* Documented variables that were missing among those returned by `comorbidity()` (@corinne-riddell, #5);
+* Added CITATION file: `citation("comorbidity")` now returns a properly formatted entry.
+
 # comorbidity 0.1.0
 
 * Added support for the ICD-9-CM version of Charlson and Elixhauser scores

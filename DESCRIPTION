@@ -1,6 +1,6 @@
 Type: Package
 Package: comorbidity
-Version: 0.1.0
+Version: 0.1.1
 Title: Computing Comorbidity Scores
 Description: Computing comorbidity scores such as the weighted Charlson score
   (Charlson, 1987 <doi:10.1016/0021-9681(87)90171-8>) and the Elixhauser
@@ -23,8 +23,8 @@ LazyData: true
 ByteCompile: true
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2018-03-07 22:22:24 UTC; ellessenne
+Packaged: 2018-03-30 11:56:07 UTC; aless
 Author: Alessandro Gasparini [aut, cre],
   Hojjat Salmasian [ctb] (ICD-9-CM scores)
 Repository: CRAN
-Date/Publication: 2018-03-07 22:31:27 UTC
+Date/Publication: 2018-03-30 12:06:43 UTC
