@@ -1,3 +1,25 @@
+# comorbidity 0.2.0
+
+* `comorbidity` is faster, with a conservative estimated speed-up of >60%;
+* Lots of internal housekeeping;
+* Fixed broken GitHub links to the R script used to generate the datasets bundled with `comorbidity`.
+
+### BREAKING CHANGES
+
+The `score` argument from `comorbidity` has been splitted into `score` and `icd`. For instance, the command `comorbidity(x = x, id = "id", code = "code", score = "charlson_icd10")` has to be modified as `r comorbidity(x = x, id = "id", code = "code", score = "charlson", icd = "icd10")`. The default value of `icd` is `icd10`, for ICD-10 codes, and possible values are `icd10` and `icd9`.
+
+# comorbidity 0.1.3
+
+* Added `nhds2010` and `australia10` datasets, imported from Stata version 15.
+
+Bug fix:
+* Fixed a bug in the regex for the ICD10 Charlson score;
+* Fixed a bug in the regex for the ICD10 Elixhauser score.
+
+# comorbidity 0.1.2
+
+* Added ICD10-CM data (version 2017 and 2018).
+
 # comorbidity 0.1.1
 
 * Documented variables that were missing among those returned by `comorbidity()` (@corinne-riddell, #5);
