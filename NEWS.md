@@ -1,3 +1,19 @@
+# comorbidity 0.3.0
+
+### BREAKING CHANGES
+
+`comorbidity` now returns two Elixhauser scores, one computed using the algorithm of val Walraven _et al_. (2009) and a second one computed using the AHRQ algorithm (Moore _et al_., 2017). Thanks to Yumiko Abe-Jones for feedback and the discussion regarding weighted Elixhauser scores.
+
+More information can be found on the package vignette: `vignette("comorbidityscores", package = "comorbidity")`.
+
+# comorbidity 0.2.1
+
+* Fixed bug in weighting algorithm of Elixhauser comorbidity score;
+* The `assign0` argument of `comorbidity` now defaults to `FALSE`;
+* Improved documentation for the `comorbidity` function:
+    - `assign0` now explains in details what hierarchy of comorbidities is applied;
+    - added reference to package vignette where comorbidity scores and weighting algorithms are explained in more detail.
+
 # comorbidity 0.2.0
 
 * `comorbidity` is faster, with a conservative estimated speed-up of >60%;
@@ -6,7 +22,7 @@
 
 ### BREAKING CHANGES
 
-The `score` argument from `comorbidity` has been splitted into `score` and `icd`. For instance, the command `comorbidity(x = x, id = "id", code = "code", score = "charlson_icd10")` has to be modified as `r comorbidity(x = x, id = "id", code = "code", score = "charlson", icd = "icd10")`. The default value of `icd` is `icd10`, for ICD-10 codes, and possible values are `icd10` and `icd9`.
+The `score` argument from `comorbidity` has been split into `score` and `icd`. For instance, the command `comorbidity(x = x, id = "id", code = "code", score = "charlson_icd10")` has to be modified as `r comorbidity(x = x, id = "id", code = "code", score = "charlson", icd = "icd10")`. The default value of `icd` is `icd10`, for ICD-10 codes, and possible values are `icd10` and `icd9`.
 
 # comorbidity 0.1.3
 

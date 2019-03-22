@@ -12,14 +12,14 @@
 
 <meta name="author" content="Alessandro Gasparini" />
 
-<meta name="date" content="2018-10-08" />
+<meta name="date" content="2019-03-22" />
 
 <title>Comorbidity scores</title>
 
 
 
 <style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
+<style type="text/css" data-origin="pandoc">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
 a.sourceLine:empty { height: 1.2em; }
@@ -37,7 +37,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+  { content: attr(title);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -81,7 +81,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
 </style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' || rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 
 
 
@@ -269,6 +291,9 @@ code > span.al { color: #ff0000; font-weight: bold; }
 code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61717; background-color: #e3d2d2; } 
 </style>
 
+
+
+
 </head>
 
 <body>
@@ -277,8 +302,8 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 
 
 <h1 class="title toc-ignore">Comorbidity scores</h1>
-<h4 class="author"><em>Alessandro Gasparini</em></h4>
-<h4 class="date"><em>2018-10-08</em></h4>
+<h4 class="author">Alessandro Gasparini</h4>
+<h4 class="date">2019-03-22</h4>
 
 
 
@@ -287,7 +312,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <h1>Charlson comorbidity score</h1>
 <p>The Charlson comorbidity index was first developed by Charlson <em>et al</em>. in 1987 to predict one-year mortality for patients who may have a range of comorbid conditions. Each condition is assigned a score depending on the risk of dying associated with each one, and consequently scores are summed to provide a total score to predict mortality.</p>
 <p>The Charlson comorbidity index includes the following comorbid conditions: acute myocardial infarction, congestive heart failure, peripheral vascular disease, cerebrovascular disease, dementia, chronic obstructive pulmonary disease [COPD], rheumatoid disease, peptic ulcer disease, mild and moderate/severe liver disease, diabetes mellitus with and without complications, hemiplegia/paraplegia, renal disease, cancer (any malignancy) and metastatic solid tumour, AIDS/HIV.</p>
-<p>Many variations of the Charlson comorbidity index have been presented, as outlined by Sharabiani <em>et al</em>. in their systematic review. <code>comorbidity</code> computes the Quan <em>et al</em>. version of the Charlson score for both ICD-9-CM and ICD-10 coding systems, as outlined in their paper from 2005; in the next subsections, we present the different ICD codes utilised by <code>comorbidity</code>. Categorisation of scores and weighted scores is based on work by Menendez <em>et al</em>.</p>
+<p>Many variations of the Charlson comorbidity index have been presented, as outlined by Sharabiani <em>et al</em>. in their systematic review. <code>comorbidity</code> computes the Quan <em>et al</em>. version of the Charlson score for both ICD-9-CM and ICD-10 coding systems, as outlined in their paper from 2005; in the next subsections, we present the different ICD codes utilised by <code>comorbidity</code>. Categorisation of scores and weighted scores are based on work by Menendez <em>et al</em>.</p>
 <div id="icd-9-cm-codes" class="section level2">
 <h2>ICD-9-CM codes</h2>
 <p>The ICD-9-CM codes used by <code>comorbidity</code> to compute the Charlson comorbidity index are:</p>
@@ -305,9 +330,9 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <li><p>Diabetes with chronic complication: 250.4 - 250.7</p></li>
 <li><p>Hemiplegia or paraplegia: 334.1, 342.x, 343.x, 344.0 - 344.6, 344.9</p></li>
 <li><p>Renal disease: 403.01, 403.11, 403.91, 404.02, 404.03, 404.12, 404.13, 404.92, 404.93, 582.x, 583.0 - 583.7, 585.x, 586.x, 588.0, V42.0, V45.1, V56.x</p></li>
-<li><p>Any malignancy, including lymphoma and leukemia, except malignant neoplasm of skin: 140.x - 172.x, 174.x - 195.8, 200.x - 208.x, 238.6</p></li>
+<li><p>Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin: 140.x - 172.x, 174.x - 195.8, 200.x - 208.x, 238.6</p></li>
 <li><p>Moderate or severe liver disease: 456.0 - 456.2, 572.2- 572.8</p></li>
-<li><p>Metastatic solid tumor: 196.x - 199.x</p></li>
+<li><p>Metastatic solid tumour: 196.x - 199.x</p></li>
 <li><p>AIDS/HIV: 042.x - 044.x</p></li>
 </ul>
 </div>
@@ -328,7 +353,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <li><p>Diabetes with chronic complication: E10.2 - E10.5, E10.7, E11.2 - E11.5, E11.7, E12.2 - E12.5, E12.7, E13.2 - E13.5, E13.7, E14.2 - E14.5, E14.7</p></li>
 <li><p>Hemiplegia or paraplegia: G04.1, G11.4, G80.1, G80.2, G81.x, G82.x, G83.0 - G83.4, G83.9</p></li>
 <li><p>Renal disease: I12.0, I13.1, N03.2 - N03.7, N05.2 - N05.7, N18.x, N19.x, N25.0, Z49.0 - Z49.2, Z94.0, Z99.2</p></li>
-<li><p>Any malignancy, including lymphoma and leukemia, except malignant neoplasm of skin: C00.x - C26.x, C30.x - C34.x, C37.x - C41.x, C43.x, C45.x - C58.x, C60.x - C76.x, C81.x - C85.x, C88.x, C90.x - C97.x</p></li>
+<li><p>Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin: C00.x - C26.x, C30.x - C34.x, C37.x - C41.x, C43.x, C45.x - C58.x, C60.x - C76.x, C81.x - C85.x, C88.x, C90.x - C97.x</p></li>
 <li><p>Moderate or severe liver disease: I85.0, I85.9, I86.4, I98.2, K70.4, K71.1, K72.1, K72.9, K76.5, K76.6, K76.7</p></li>
 <li><p>Metastatic solid tumour: C77.x - C80.x</p></li>
 <li><p>AIDS/HIV: B20.x - B22.x, B24.x</p></li>
@@ -347,7 +372,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <li>the list of specific ICD diagnosis codes that are used to identify different categories of comorbidity have been modified and updated from ICD-9-CM to work with ICD-10 coding (Quan <em>et al</em>., 2005);</li>
 <li>weighting algorithms were developed, based on the association between comorbidity and death, in order to produce an overall score for the Elixhauser index (van Walraven <em>et al</em>., 2009; Moore <em>et al</em>., 2016).</li>
 </ul>
-<p><code>comorbidity</code> is using the coding definition of Quan <em>et al</em>. (2005) for both ICD-9-CM and ICD-10 coding systems. The weighting is based on work by Moore <em>et al</em>. (2016); however, as the AHRQ Elixhauser comorbidity score only includes 29 comorbidites and not 31 (as in the Quan <em>et al</em>. version), we included weights from van Walraven <em>et al</em>. for the missing comorbidities. The actual codes and weights utilised by <code>comorbidity</code> are introduced in the next subsections. Finally, the categorisation of scores and weighted scores is based on work by Menendez <em>et al</em>.</p>
+<p><code>comorbidity</code> is using the coding definition of Quan <em>et al</em>. (2005) for both ICD-9-CM and ICD-10 coding systems; the actual codes and weights utilised by <code>comorbidity</code> are introduced in the next subsections. However, there is no consensus regarding the weighting algorithm, with several competing definitions. <code>comorbidity</code> implements (and returns) both the AHRQ version of the Elixhauser index (Moore <em>et al</em>., 2017) and the van Walraven <em>et al.</em> (2009) version. The AHRQ Elixhauser comorbidity score only includes 29 comorbidities; the missing comorbidities are therefore assigned a weight of zero. Finally, the categorisation of scores and weighted scores is based on work by Menendez <em>et al</em>.</p>
 <div id="icd-9-cm-codes-1" class="section level2">
 <h2>ICD-9-CM codes</h2>
 <p>The ICD-9-CM codes used by <code>comorbidity</code> to compute the Elixhauser comorbidity index are:</p>
@@ -371,14 +396,14 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <li><p>AIDS/HIV: 042.x - 044.x</p></li>
 <li><p>Lymphoma: 200.x - 202.x, 203.0, 238.6</p></li>
 <li><p>Metastatic cancer: 196.x - 199.x</p></li>
-<li><p>Solid tumor without metastasis: 140.x - 172.x, 174.x - 195.x</p></li>
+<li><p>Solid tumour without metastasis: 140.x - 172.x, 174.x - 195.x</p></li>
 <li><p>Rheumatoid arthritis/collagen vascular diseases: 446.x, 701.0, 710.0 - 710.4, 710.8, 710.9, 711.2, 714.x, 719.3, 720.x, 725.x, 728.5, 728.89, 729.30</p></li>
 <li><p>Coagulopathy: 286.x, 287.1, 287.3 - 287.5</p></li>
 <li><p>Obesity: 278.0</p></li>
 <li><p>Weight loss: 260.x - 263.x, 783.2, 799.4</p></li>
 <li><p>Fluid and electrolyte disorders: 253.6, 276.x</p></li>
-<li><p>Blood loss anemia: 280.0</p></li>
-<li><p>Deficiency anemia: 280.1 - 280.9, 281.x</p></li>
+<li><p>Blood loss anaemia: 280.0</p></li>
+<li><p>Deficiency anaemia: 280.1 - 280.9, 281.x</p></li>
 <li><p>Alcohol abuse: 265.2, 291.1 - 291.3, 291.5 - 291.9, 303.0, 303.9, 305.0, 357.5, 425.5, 535.3, 571.0 - 571.3, 980.x, V11.3</p></li>
 <li><p>Drug abuse: 292.x, 304.x, 305.2 - 305.9, V65.42</p></li>
 <li><p>Psychoses: 293.8, 295.x, 296.04, 296.14, 296.44, 296.54, 297.x, 298.x</p></li>
@@ -408,14 +433,14 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <li><p>AIDS/HIV: B20.x - B22.x, B24.x</p></li>
 <li><p>Lymphoma: C81.x - C85.x, C88.x, C96.x, C90.0, C90.2</p></li>
 <li><p>Metastatic cancer: C77.x - C80.x</p></li>
-<li><p>Solid tumor without metastasis: C00.x - C26.x, C30.x - C34.x, C37.x - C41.x, C43.x, C45.x - C58.x, C60.x - C76.x, C97.x</p></li>
+<li><p>Solid tumour without metastasis: C00.x - C26.x, C30.x - C34.x, C37.x - C41.x, C43.x, C45.x - C58.x, C60.x - C76.x, C97.x</p></li>
 <li><p>Rheumatoid arthritis/collagen vascular diseases: L94.0, L94.1, L94.3, M05.x, M06.x, M08.x, M12.0, M12.3, M30.x, M31.0 - M31.3, M32.x - M35.x, M45.x, M46.1, M46.8, M46.9</p></li>
 <li><p>Coagulopathy: D65 - D68.x, D69.1, D69.3 - D69.6</p></li>
 <li><p>Obesity: E66.x</p></li>
 <li><p>Weight loss: E40.x - E46.x, R63.4, R64</p></li>
 <li><p>Fluid and electrolyte disorders: E22.2, E86.x, E87.x</p></li>
-<li><p>Blood loss anemia: D50.0</p></li>
-<li><p>Deficiency anemia: D50.8, D50.9, D51.x - D53.x</p></li>
+<li><p>Blood loss anaemia: D50.0</p></li>
+<li><p>Deficiency anaemia: D50.8, D50.9, D51.x - D53.x</p></li>
 <li><p>Alcohol abuse: F10, E52, G62.1, I42.6, K29.2, K70.0, K70.3, K70.9, T51.x, Z50.2, Z71.4, Z72.1</p></li>
 <li><p>Drug abuse: F11.x - F16.x, F18.x, F19.x, Z71.5, Z72.2</p></li>
 <li><p>Psychoses: F20.x, F22.x - F25.x, F28.x, F29.x, F30.2, F31.2, F31.5</p></li>
@@ -424,169 +449,335 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 </div>
 <div id="weights-1" class="section level2">
 <h2>Weights</h2>
-<p>The weights for the Elixhauser comorbidity index are based on work by Moore <em>et al</em>. (2016): congestive heart failure (9), valvular disease (0), pulmonary circulation disorders (6), peripheral vascular disorders (3), hypertension (-1), paralysis (5), neurodegenerative disorders (5), chronic pulmonary disease (3), uncomplicated diabetes (0), complicated diabetes (-3), hypothyroidism (0), renal failure (6), liver disease (4), peptic ulcer disease with no bleeding (0), AIDS/HIV (0), lymphoma (6), metastatic cancer (14), solid tumour without metastasis (7), rheumatoid arthritis or collagen vascular diseases (0), coagulopathy (11), obesity (-5), weight loss (9), fluid and electrolyte disorders (11), blood loss anemia (-3), deficiency anemia (-2), alcohol abuse (-1), drug abuse (-7), psychosis (-5), depression (-5). The AHRQ version of the Elixhauser index does not include cardiac arrhythmias as a comorbidity; therefore, we utilised the weight from the paper by van Walraven <em>et al</em>. (5) for that specific domain.</p>
+<p>The weights for the Elixhauser comorbidity index are included in the following table, depending on the algorithm used for the weighting process:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Comorbidity Domain</th>
+<th align="center">AHRQ Algorithm</th>
+<th align="center">van Walraven Algorithm</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Congestive heart failure</td>
+<td align="center">9</td>
+<td align="center">7</td>
+</tr>
+<tr class="even">
+<td align="center">Cardiac arrhythmias</td>
+<td align="center">(0)</td>
+<td align="center">5</td>
+</tr>
+<tr class="odd">
+<td align="center">Valvular disease</td>
+<td align="center">0</td>
+<td align="center">-1</td>
+</tr>
+<tr class="even">
+<td align="center">Pulmonary circulation disorders</td>
+<td align="center">6</td>
+<td align="center">4</td>
+</tr>
+<tr class="odd">
+<td align="center">Peripheral vascular disorders</td>
+<td align="center">3</td>
+<td align="center">2</td>
+</tr>
+<tr class="even">
+<td align="center">Hypertension (combined uncomplicated and complicated)</td>
+<td align="center">-1</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td align="center">Paralysis</td>
+<td align="center">5</td>
+<td align="center">7</td>
+</tr>
+<tr class="even">
+<td align="center">Other neurological disorders</td>
+<td align="center">5</td>
+<td align="center">6</td>
+</tr>
+<tr class="odd">
+<td align="center">Chronic pulmonary disease</td>
+<td align="center">3</td>
+<td align="center">3</td>
+</tr>
+<tr class="even">
+<td align="center">Diabetes, uncomplicated</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td align="center">Diabetes, complicated</td>
+<td align="center">-3</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="center">Hypothyroidism</td>
+<td align="center">4</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td align="center">Renal failure</td>
+<td align="center">6</td>
+<td align="center">5</td>
+</tr>
+<tr class="even">
+<td align="center">Liver disease</td>
+<td align="center">4</td>
+<td align="center">11</td>
+</tr>
+<tr class="odd">
+<td align="center">Peptic ulcer disease, excluding bleeding</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="center">AIDS/HIV</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td align="center">Lymphoma</td>
+<td align="center">6</td>
+<td align="center">9</td>
+</tr>
+<tr class="even">
+<td align="center">Metastatic cancer</td>
+<td align="center">14</td>
+<td align="center">12</td>
+</tr>
+<tr class="odd">
+<td align="center">Solid tumour without metastasis</td>
+<td align="center">7</td>
+<td align="center">4</td>
+</tr>
+<tr class="even">
+<td align="center">Rheumatoid arthritis/collagen vascular diseases</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td align="center">Coagulopathy</td>
+<td align="center">11</td>
+<td align="center">3</td>
+</tr>
+<tr class="even">
+<td align="center">Obesity</td>
+<td align="center">-5</td>
+<td align="center">-4</td>
+</tr>
+<tr class="odd">
+<td align="center">Weight loss</td>
+<td align="center">9</td>
+<td align="center">6</td>
+</tr>
+<tr class="even">
+<td align="center">Fluid and electrolyte disorders</td>
+<td align="center">11</td>
+<td align="center">5</td>
+</tr>
+<tr class="odd">
+<td align="center">Blood loss anaemia</td>
+<td align="center">-3</td>
+<td align="center">-2</td>
+</tr>
+<tr class="even">
+<td align="center">Deficiency anaemia</td>
+<td align="center">-2</td>
+<td align="center">-2</td>
+</tr>
+<tr class="odd">
+<td align="center">Alcohol abuse</td>
+<td align="center">-1</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="center">Drug abuse</td>
+<td align="center">-7</td>
+<td align="center">-7</td>
+</tr>
+<tr class="odd">
+<td align="center">Psychoses</td>
+<td align="center">-5</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="center">Depression</td>
+<td align="center">-5</td>
+<td align="center">-3</td>
+</tr>
+</tbody>
+</table>
+<p>The AHRQ algorithm does not include cardiac arrhythmias, hence a weight of 0 is assigned.</p>
 </div>
 </div>
 <div id="examples" class="section level1">
 <h1>Examples</h1>
 <p>The first step consists in loading the <code>comorbidity</code> package:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(comorbidity)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">library</span>(comorbidity)</a></code></pre></div>
 <p>We can utilise the built-in <code>sample_diag()</code> function to simulate ICD diagnostic codes. Both ICD-9 and ICD-10 codes are supported:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">data9 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">  <span class="dt">id =</span> <span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="dt">size =</span> <span class="dv">250</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb2-3" data-line-number="3">  <span class="dt">code =</span> <span class="kw">sample_diag</span>(<span class="dt">n =</span> <span class="dv">250</span>, <span class="dt">version =</span> <span class="st">&quot;ICD9_2015&quot;</span>),</a>
-<a class="sourceLine" id="cb2-4" data-line-number="4">  <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5">)</a>
-<a class="sourceLine" id="cb2-6" data-line-number="6">data9 &lt;-<span class="st"> </span>data9[<span class="kw">order</span>(data9<span class="op">$</span>id), ]</a>
-<a class="sourceLine" id="cb2-7" data-line-number="7">data10 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</a>
-<a class="sourceLine" id="cb2-8" data-line-number="8">  <span class="dt">id =</span> <span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="dt">size =</span> <span class="dv">250</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb2-9" data-line-number="9">  <span class="dt">code =</span> <span class="kw">sample_diag</span>(<span class="dt">n =</span> <span class="dv">250</span>, <span class="dt">version =</span> <span class="st">&quot;ICD10_2011&quot;</span>),</a>
-<a class="sourceLine" id="cb2-10" data-line-number="10">  <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span></a>
-<a class="sourceLine" id="cb2-11" data-line-number="11">)</a>
-<a class="sourceLine" id="cb2-12" data-line-number="12">data10 &lt;-<span class="st"> </span>data10[<span class="kw">order</span>(data10<span class="op">$</span>id), ]</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">data9 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</a>
+<a class="sourceLine" id="cb2-2" title="2">  <span class="dt">id =</span> <span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="dt">size =</span> <span class="dv">250</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb2-3" title="3">  <span class="dt">code =</span> <span class="kw">sample_diag</span>(<span class="dt">n =</span> <span class="dv">250</span>, <span class="dt">version =</span> <span class="st">&quot;ICD9_2015&quot;</span>),</a>
+<a class="sourceLine" id="cb2-4" title="4">  <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span></a>
+<a class="sourceLine" id="cb2-5" title="5">)</a>
+<a class="sourceLine" id="cb2-6" title="6">data9 &lt;-<span class="st"> </span>data9[<span class="kw">order</span>(data9<span class="op">$</span>id), ]</a>
+<a class="sourceLine" id="cb2-7" title="7">data10 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</a>
+<a class="sourceLine" id="cb2-8" title="8">  <span class="dt">id =</span> <span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="dt">size =</span> <span class="dv">250</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb2-9" title="9">  <span class="dt">code =</span> <span class="kw">sample_diag</span>(<span class="dt">n =</span> <span class="dv">250</span>, <span class="dt">version =</span> <span class="st">&quot;ICD10_2011&quot;</span>),</a>
+<a class="sourceLine" id="cb2-10" title="10">  <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span></a>
+<a class="sourceLine" id="cb2-11" title="11">)</a>
+<a class="sourceLine" id="cb2-12" title="12">data10 &lt;-<span class="st"> </span>data10[<span class="kw">order</span>(data10<span class="op">$</span>id), ]</a></code></pre></div>
 <p>Then, we can go ahead and compute various comorbidity scores and indices supported by <code>comorbidity</code>. The Charlson score based on ICD-9-CM data is computed as:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">charlson9 &lt;-<span class="st"> </span><span class="kw">comorbidity</span>(<span class="dt">x =</span> data9, <span class="dt">id =</span> <span class="st">&quot;id&quot;</span>, <span class="dt">code =</span> <span class="st">&quot;code&quot;</span>, <span class="dt">score =</span> <span class="st">&quot;charlson&quot;</span>, <span class="dt">icd =</span> <span class="st">&quot;icd9&quot;</span>)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw">str</span>(charlson9)</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt; &#39;data.frame&#39;:    10 obs. of  22 variables:</span></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt;  $ id      : chr  &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...</span></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt;  $ ami     : num  0 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt;  $ chf     : num  0 0 0 0 0 0 1 0 0 0</span></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt;  $ pvd     : num  0 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt;  $ cevd    : num  0 0 0 0 0 0 0 0 1 0</span></a>
-<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt;  $ dementia: num  0 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt;  $ copd    : num  0 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt;  $ rheumd  : num  0 1 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="co">#&gt;  $ pud     : num  0 0 0 0 0 1 0 0 0 0</span></a>
-<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="co">#&gt;  $ mld     : num  0 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="co">#&gt;  $ diab    : num  0 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb3-15" data-line-number="15"><span class="co">#&gt;  $ diabwc  : num  0 0 0 0 1 0 0 0 0 1</span></a>
-<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="co">#&gt;  $ hp      : num  0 0 0 0 1 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb3-17" data-line-number="17"><span class="co">#&gt;  $ rend    : num  0 0 0 1 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb3-18" data-line-number="18"><span class="co">#&gt;  $ canc    : num  1 1 0 0 1 1 0 1 1 0</span></a>
-<a class="sourceLine" id="cb3-19" data-line-number="19"><span class="co">#&gt;  $ msld    : num  0 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb3-20" data-line-number="20"><span class="co">#&gt;  $ metacanc: num  0 0 0 0 0 0 0 0 1 0</span></a>
-<a class="sourceLine" id="cb3-21" data-line-number="21"><span class="co">#&gt;  $ aids    : num  0 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb3-22" data-line-number="22"><span class="co">#&gt;  $ score   : num  1 2 0 1 3 2 1 1 2 1</span></a>
-<a class="sourceLine" id="cb3-23" data-line-number="23"><span class="co">#&gt;  $ index   : Factor w/ 4 levels &quot;0&quot;,&quot;1-2&quot;,&quot;3-4&quot;,..: 2 2 1 2 3 2 2 2 2 2</span></a>
-<a class="sourceLine" id="cb3-24" data-line-number="24"><span class="co">#&gt;  $ wscore  : num  2 3 0 2 6 3 1 2 7 2</span></a>
-<a class="sourceLine" id="cb3-25" data-line-number="25"><span class="co">#&gt;  $ windex  : Factor w/ 4 levels &quot;0&quot;,&quot;1-2&quot;,&quot;3-4&quot;,..: 2 3 1 2 4 3 2 2 4 2</span></a>
-<a class="sourceLine" id="cb3-26" data-line-number="26"><span class="co">#&gt;  - attr(*, &quot;variable.labels&quot;)= chr  &quot;ID&quot; &quot;Myocardial infarction&quot; &quot;Congestive heart failure&quot; &quot;Peripheral vascular disease&quot; ...</span></a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">charlson9 &lt;-<span class="st"> </span><span class="kw">comorbidity</span>(<span class="dt">x =</span> data9, <span class="dt">id =</span> <span class="st">&quot;id&quot;</span>, <span class="dt">code =</span> <span class="st">&quot;code&quot;</span>, <span class="dt">score =</span> <span class="st">&quot;charlson&quot;</span>, <span class="dt">icd =</span> <span class="st">&quot;icd9&quot;</span>)</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="kw">str</span>(charlson9)</a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="co">#&gt; &#39;data.frame&#39;:    10 obs. of  22 variables:</span></a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="co">#&gt;  $ id      : chr  &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...</span></a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="co">#&gt;  $ ami     : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb3-6" title="6"><span class="co">#&gt;  $ chf     : num  0 0 0 0 0 0 1 0 0 0</span></a>
+<a class="sourceLine" id="cb3-7" title="7"><span class="co">#&gt;  $ pvd     : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb3-8" title="8"><span class="co">#&gt;  $ cevd    : num  0 0 0 0 0 1 0 0 0 0</span></a>
+<a class="sourceLine" id="cb3-9" title="9"><span class="co">#&gt;  $ dementia: num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb3-10" title="10"><span class="co">#&gt;  $ copd    : num  0 0 0 0 1 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb3-11" title="11"><span class="co">#&gt;  $ rheumd  : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb3-12" title="12"><span class="co">#&gt;  $ pud     : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb3-13" title="13"><span class="co">#&gt;  $ mld     : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb3-14" title="14"><span class="co">#&gt;  $ diab    : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb3-15" title="15"><span class="co">#&gt;  $ diabwc  : num  0 0 0 0 1 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb3-16" title="16"><span class="co">#&gt;  $ hp      : num  0 0 0 0 0 0 0 0 1 0</span></a>
+<a class="sourceLine" id="cb3-17" title="17"><span class="co">#&gt;  $ rend    : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb3-18" title="18"><span class="co">#&gt;  $ canc    : num  0 1 0 1 1 1 0 1 1 1</span></a>
+<a class="sourceLine" id="cb3-19" title="19"><span class="co">#&gt;  $ msld    : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb3-20" title="20"><span class="co">#&gt;  $ metacanc: num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb3-21" title="21"><span class="co">#&gt;  $ aids    : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb3-22" title="22"><span class="co">#&gt;  $ score   : num  0 1 0 1 3 2 1 1 2 1</span></a>
+<a class="sourceLine" id="cb3-23" title="23"><span class="co">#&gt;  $ index   : Factor w/ 4 levels &quot;0&quot;,&quot;1-2&quot;,&quot;3-4&quot;,..: 1 2 1 2 3 2 2 2 2 2</span></a>
+<a class="sourceLine" id="cb3-24" title="24"><span class="co">#&gt;  $ wscore  : num  0 2 0 2 5 3 1 2 4 2</span></a>
+<a class="sourceLine" id="cb3-25" title="25"><span class="co">#&gt;  $ windex  : Factor w/ 4 levels &quot;0&quot;,&quot;1-2&quot;,&quot;3-4&quot;,..: 1 2 1 2 4 3 2 2 3 2</span></a>
+<a class="sourceLine" id="cb3-26" title="26"><span class="co">#&gt;  - attr(*, &quot;variable.labels&quot;)= chr  &quot;ID&quot; &quot;Myocardial infarction&quot; &quot;Congestive heart failure&quot; &quot;Peripheral vascular disease&quot; ...</span></a></code></pre></div>
 <p>The Charlson score based on ICD-10 data:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">charlson10 &lt;-<span class="st"> </span><span class="kw">comorbidity</span>(<span class="dt">x =</span> data10, <span class="dt">id =</span> <span class="st">&quot;id&quot;</span>, <span class="dt">code =</span> <span class="st">&quot;code&quot;</span>, <span class="dt">score =</span> <span class="st">&quot;charlson&quot;</span>, <span class="dt">icd =</span> <span class="st">&quot;icd10&quot;</span>)</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw">str</span>(charlson10)</a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt; &#39;data.frame&#39;:    10 obs. of  22 variables:</span></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt;  $ id      : chr  &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...</span></a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt;  $ ami     : num  0 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt;  $ chf     : num  0 1 0 0 0 0 0 0 0 1</span></a>
-<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt;  $ pvd     : num  1 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt;  $ cevd    : num  0 0 0 0 0 0 0 1 0 0</span></a>
-<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt;  $ dementia: num  0 0 0 0 0 0 0 0 1 0</span></a>
-<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt;  $ copd    : num  0 0 0 0 0 0 0 1 0 0</span></a>
-<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">#&gt;  $ rheumd  : num  0 0 0 0 0 1 0 0 0 1</span></a>
-<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="co">#&gt;  $ pud     : num  0 0 1 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="co">#&gt;  $ mld     : num  0 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb4-14" data-line-number="14"><span class="co">#&gt;  $ diab    : num  0 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb4-15" data-line-number="15"><span class="co">#&gt;  $ diabwc  : num  0 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb4-16" data-line-number="16"><span class="co">#&gt;  $ hp      : num  0 0 0 0 1 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb4-17" data-line-number="17"><span class="co">#&gt;  $ rend    : num  1 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb4-18" data-line-number="18"><span class="co">#&gt;  $ canc    : num  0 1 0 1 1 1 1 1 0 1</span></a>
-<a class="sourceLine" id="cb4-19" data-line-number="19"><span class="co">#&gt;  $ msld    : num  0 0 0 0 1 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb4-20" data-line-number="20"><span class="co">#&gt;  $ metacanc: num  0 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb4-21" data-line-number="21"><span class="co">#&gt;  $ aids    : num  0 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb4-22" data-line-number="22"><span class="co">#&gt;  $ score   : num  2 2 1 1 3 2 1 3 1 3</span></a>
-<a class="sourceLine" id="cb4-23" data-line-number="23"><span class="co">#&gt;  $ index   : Factor w/ 4 levels &quot;0&quot;,&quot;1-2&quot;,&quot;3-4&quot;,..: 2 2 2 2 3 2 2 3 2 3</span></a>
-<a class="sourceLine" id="cb4-24" data-line-number="24"><span class="co">#&gt;  $ wscore  : num  3 3 1 2 7 3 2 4 1 4</span></a>
-<a class="sourceLine" id="cb4-25" data-line-number="25"><span class="co">#&gt;  $ windex  : Factor w/ 4 levels &quot;0&quot;,&quot;1-2&quot;,&quot;3-4&quot;,..: 3 3 2 2 4 3 2 3 2 3</span></a>
-<a class="sourceLine" id="cb4-26" data-line-number="26"><span class="co">#&gt;  - attr(*, &quot;variable.labels&quot;)= chr  &quot;ID&quot; &quot;Myocardial infarction&quot; &quot;Congestive heart failure&quot; &quot;Peripheral vascular disease&quot; ...</span></a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">charlson10 &lt;-<span class="st"> </span><span class="kw">comorbidity</span>(<span class="dt">x =</span> data10, <span class="dt">id =</span> <span class="st">&quot;id&quot;</span>, <span class="dt">code =</span> <span class="st">&quot;code&quot;</span>, <span class="dt">score =</span> <span class="st">&quot;charlson&quot;</span>, <span class="dt">icd =</span> <span class="st">&quot;icd10&quot;</span>)</a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="kw">str</span>(charlson10)</a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="co">#&gt; &#39;data.frame&#39;:    10 obs. of  22 variables:</span></a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="co">#&gt;  $ id      : chr  &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...</span></a>
+<a class="sourceLine" id="cb4-5" title="5"><span class="co">#&gt;  $ ami     : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb4-6" title="6"><span class="co">#&gt;  $ chf     : num  0 0 0 1 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb4-7" title="7"><span class="co">#&gt;  $ pvd     : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb4-8" title="8"><span class="co">#&gt;  $ cevd    : num  0 0 0 0 1 1 0 1 1 0</span></a>
+<a class="sourceLine" id="cb4-9" title="9"><span class="co">#&gt;  $ dementia: num  0 0 0 1 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb4-10" title="10"><span class="co">#&gt;  $ copd    : num  0 0 0 0 0 1 0 1 0 0</span></a>
+<a class="sourceLine" id="cb4-11" title="11"><span class="co">#&gt;  $ rheumd  : num  0 0 0 0 1 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb4-12" title="12"><span class="co">#&gt;  $ pud     : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb4-13" title="13"><span class="co">#&gt;  $ mld     : num  0 0 0 0 1 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb4-14" title="14"><span class="co">#&gt;  $ diab    : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb4-15" title="15"><span class="co">#&gt;  $ diabwc  : num  0 0 0 0 0 1 0 0 0 0</span></a>
+<a class="sourceLine" id="cb4-16" title="16"><span class="co">#&gt;  $ hp      : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb4-17" title="17"><span class="co">#&gt;  $ rend    : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb4-18" title="18"><span class="co">#&gt;  $ canc    : num  1 0 1 0 1 1 0 1 0 1</span></a>
+<a class="sourceLine" id="cb4-19" title="19"><span class="co">#&gt;  $ msld    : num  0 0 0 0 0 0 0 0 1 0</span></a>
+<a class="sourceLine" id="cb4-20" title="20"><span class="co">#&gt;  $ metacanc: num  0 0 0 1 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb4-21" title="21"><span class="co">#&gt;  $ aids    : num  0 0 0 1 0 0 0 0 1 0</span></a>
+<a class="sourceLine" id="cb4-22" title="22"><span class="co">#&gt;  $ score   : num  1 0 1 4 4 4 0 3 3 1</span></a>
+<a class="sourceLine" id="cb4-23" title="23"><span class="co">#&gt;  $ index   : Factor w/ 4 levels &quot;0&quot;,&quot;1-2&quot;,&quot;3-4&quot;,..: 2 1 2 3 3 3 1 3 3 2</span></a>
+<a class="sourceLine" id="cb4-24" title="24"><span class="co">#&gt;  $ wscore  : num  2 0 2 14 5 6 0 4 10 2</span></a>
+<a class="sourceLine" id="cb4-25" title="25"><span class="co">#&gt;  $ windex  : Factor w/ 4 levels &quot;0&quot;,&quot;1-2&quot;,&quot;3-4&quot;,..: 2 1 2 4 4 4 1 3 4 2</span></a>
+<a class="sourceLine" id="cb4-26" title="26"><span class="co">#&gt;  - attr(*, &quot;variable.labels&quot;)= chr  &quot;ID&quot; &quot;Myocardial infarction&quot; &quot;Congestive heart failure&quot; &quot;Peripheral vascular disease&quot; ...</span></a></code></pre></div>
 <p>The Elixhauser score based on ICD-9-CM data:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">elixhauser9 &lt;-<span class="st"> </span><span class="kw">comorbidity</span>(<span class="dt">x =</span> data9, <span class="dt">id =</span> <span class="st">&quot;id&quot;</span>, <span class="dt">code =</span> <span class="st">&quot;code&quot;</span>, <span class="dt">score =</span> <span class="st">&quot;elixhauser&quot;</span>, <span class="dt">icd =</span> <span class="st">&quot;icd9&quot;</span>)</a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw">str</span>(elixhauser9)</a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt; &#39;data.frame&#39;:    10 obs. of  36 variables:</span></a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt;  $ id      : chr  &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...</span></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt;  $ chf     : num  0 0 0 0 0 0 1 0 0 0</span></a>
-<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt;  $ carit   : num  0 0 0 0 0 0 0 0 0 1</span></a>
-<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt;  $ valv    : num  0 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt;  $ pcd     : num  0 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt;  $ pvd     : num  0 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt;  $ hypunc  : num  0 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt;  $ hypc    : num  0 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="co">#&gt;  $ para    : num  0 0 0 0 1 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="co">#&gt;  $ ond     : num  0 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="co">#&gt;  $ cpd     : num  0 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb5-15" data-line-number="15"><span class="co">#&gt;  $ diabunc : num  0 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb5-16" data-line-number="16"><span class="co">#&gt;  $ diabc   : num  0 0 0 0 1 0 0 0 0 1</span></a>
-<a class="sourceLine" id="cb5-17" data-line-number="17"><span class="co">#&gt;  $ hypothy : num  0 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb5-18" data-line-number="18"><span class="co">#&gt;  $ rf      : num  0 0 0 1 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb5-19" data-line-number="19"><span class="co">#&gt;  $ ld      : num  0 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb5-20" data-line-number="20"><span class="co">#&gt;  $ pud     : num  0 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb5-21" data-line-number="21"><span class="co">#&gt;  $ aids    : num  0 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb5-22" data-line-number="22"><span class="co">#&gt;  $ lymph   : num  1 1 0 0 0 0 0 1 1 0</span></a>
-<a class="sourceLine" id="cb5-23" data-line-number="23"><span class="co">#&gt;  $ metacanc: num  0 0 0 0 0 0 0 0 1 0</span></a>
-<a class="sourceLine" id="cb5-24" data-line-number="24"><span class="co">#&gt;  $ solidtum: num  0 0 0 0 1 1 0 1 1 0</span></a>
-<a class="sourceLine" id="cb5-25" data-line-number="25"><span class="co">#&gt;  $ rheumd  : num  0 1 0 0 0 0 0 1 0 0</span></a>
-<a class="sourceLine" id="cb5-26" data-line-number="26"><span class="co">#&gt;  $ coag    : num  0 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb5-27" data-line-number="27"><span class="co">#&gt;  $ obes    : num  0 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb5-28" data-line-number="28"><span class="co">#&gt;  $ wloss   : num  0 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb5-29" data-line-number="29"><span class="co">#&gt;  $ fed     : num  0 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb5-30" data-line-number="30"><span class="co">#&gt;  $ blane   : num  0 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb5-31" data-line-number="31"><span class="co">#&gt;  $ dane    : num  0 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb5-32" data-line-number="32"><span class="co">#&gt;  $ alcohol : num  0 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb5-33" data-line-number="33"><span class="co">#&gt;  $ drug    : num  0 0 0 0 1 0 1 0 0 0</span></a>
-<a class="sourceLine" id="cb5-34" data-line-number="34"><span class="co">#&gt;  $ psycho  : num  1 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb5-35" data-line-number="35"><span class="co">#&gt;  $ depre   : num  0 0 0 0 1 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb5-36" data-line-number="36"><span class="co">#&gt;  $ score   : num  2 2 0 1 5 1 2 3 2 2</span></a>
-<a class="sourceLine" id="cb5-37" data-line-number="37"><span class="co">#&gt;  $ index   : Factor w/ 4 levels &quot;&lt;0&quot;,&quot;0&quot;,&quot;1-4&quot;,..: 3 3 2 3 4 3 3 3 3 3</span></a>
-<a class="sourceLine" id="cb5-38" data-line-number="38"><span class="co">#&gt;  $ wscore  : num  1 6 0 6 -3 7 -4 13 20 2</span></a>
-<a class="sourceLine" id="cb5-39" data-line-number="39"><span class="co">#&gt;  $ windex  : Factor w/ 4 levels &quot;&lt;0&quot;,&quot;0&quot;,&quot;1-4&quot;,..: 3 4 2 4 1 4 1 4 4 3</span></a>
-<a class="sourceLine" id="cb5-40" data-line-number="40"><span class="co">#&gt;  - attr(*, &quot;variable.labels&quot;)= chr  &quot;ID&quot; &quot;Congestive heart failure&quot; &quot;Cardiac arrhythmias&quot; &quot;Valvular disease&quot; ...</span></a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">elixhauser9 &lt;-<span class="st"> </span><span class="kw">comorbidity</span>(<span class="dt">x =</span> data9, <span class="dt">id =</span> <span class="st">&quot;id&quot;</span>, <span class="dt">code =</span> <span class="st">&quot;code&quot;</span>, <span class="dt">score =</span> <span class="st">&quot;elixhauser&quot;</span>, <span class="dt">icd =</span> <span class="st">&quot;icd9&quot;</span>)</a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="kw">str</span>(elixhauser9)</a>
+<a class="sourceLine" id="cb5-3" title="3"><span class="co">#&gt; &#39;data.frame&#39;:    10 obs. of  38 variables:</span></a>
+<a class="sourceLine" id="cb5-4" title="4"><span class="co">#&gt;  $ id         : chr  &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...</span></a>
+<a class="sourceLine" id="cb5-5" title="5"><span class="co">#&gt;  $ chf        : num  0 0 0 0 0 0 1 0 0 0</span></a>
+<a class="sourceLine" id="cb5-6" title="6"><span class="co">#&gt;  $ carit      : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb5-7" title="7"><span class="co">#&gt;  $ valv       : num  0 1 0 0 0 0 0 0 1 0</span></a>
+<a class="sourceLine" id="cb5-8" title="8"><span class="co">#&gt;  $ pcd        : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb5-9" title="9"><span class="co">#&gt;  $ pvd        : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb5-10" title="10"><span class="co">#&gt;  $ hypunc     : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb5-11" title="11"><span class="co">#&gt;  $ hypc       : num  0 0 0 0 0 1 1 0 0 0</span></a>
+<a class="sourceLine" id="cb5-12" title="12"><span class="co">#&gt;  $ para       : num  0 0 0 0 0 0 0 0 1 0</span></a>
+<a class="sourceLine" id="cb5-13" title="13"><span class="co">#&gt;  $ ond        : num  0 0 0 0 0 1 0 1 0 1</span></a>
+<a class="sourceLine" id="cb5-14" title="14"><span class="co">#&gt;  $ cpd        : num  0 0 0 0 1 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb5-15" title="15"><span class="co">#&gt;  $ diabunc    : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb5-16" title="16"><span class="co">#&gt;  $ diabc      : num  0 0 0 0 1 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb5-17" title="17"><span class="co">#&gt;  $ hypothy    : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb5-18" title="18"><span class="co">#&gt;  $ rf         : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb5-19" title="19"><span class="co">#&gt;  $ ld         : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb5-20" title="20"><span class="co">#&gt;  $ pud        : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb5-21" title="21"><span class="co">#&gt;  $ aids       : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb5-22" title="22"><span class="co">#&gt;  $ lymph      : num  0 1 0 0 0 1 0 0 1 1</span></a>
+<a class="sourceLine" id="cb5-23" title="23"><span class="co">#&gt;  $ metacanc   : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb5-24" title="24"><span class="co">#&gt;  $ solidtum   : num  0 1 0 1 1 0 0 1 1 0</span></a>
+<a class="sourceLine" id="cb5-25" title="25"><span class="co">#&gt;  $ rheumd     : num  0 0 1 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb5-26" title="26"><span class="co">#&gt;  $ coag       : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb5-27" title="27"><span class="co">#&gt;  $ obes       : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb5-28" title="28"><span class="co">#&gt;  $ wloss      : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb5-29" title="29"><span class="co">#&gt;  $ fed        : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb5-30" title="30"><span class="co">#&gt;  $ blane      : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb5-31" title="31"><span class="co">#&gt;  $ dane       : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb5-32" title="32"><span class="co">#&gt;  $ alcohol    : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb5-33" title="33"><span class="co">#&gt;  $ drug       : num  0 1 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb5-34" title="34"><span class="co">#&gt;  $ psycho     : num  0 0 0 0 0 0 0 1 0 0</span></a>
+<a class="sourceLine" id="cb5-35" title="35"><span class="co">#&gt;  $ depre      : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb5-36" title="36"><span class="co">#&gt;  $ score      : num  0 4 1 1 3 3 2 3 4 2</span></a>
+<a class="sourceLine" id="cb5-37" title="37"><span class="co">#&gt;  $ index      : Factor w/ 4 levels &quot;&lt;0&quot;,&quot;0&quot;,&quot;1-4&quot;,..: 2 3 3 3 3 3 3 3 3 3</span></a>
+<a class="sourceLine" id="cb5-38" title="38"><span class="co">#&gt;  $ wscore_ahrq: num  0 6 0 7 7 10 8 7 18 11</span></a>
+<a class="sourceLine" id="cb5-39" title="39"><span class="co">#&gt;  $ wscore_vw  : num  0 5 0 4 7 15 7 10 19 15</span></a>
+<a class="sourceLine" id="cb5-40" title="40"><span class="co">#&gt;  $ windex_ahrq: Factor w/ 4 levels &quot;&lt;0&quot;,&quot;0&quot;,&quot;1-4&quot;,..: 2 4 2 4 4 4 4 4 4 4</span></a>
+<a class="sourceLine" id="cb5-41" title="41"><span class="co">#&gt;  $ windex_vw  : Factor w/ 4 levels &quot;&lt;0&quot;,&quot;0&quot;,&quot;1-4&quot;,..: 2 4 2 3 4 4 4 4 4 4</span></a>
+<a class="sourceLine" id="cb5-42" title="42"><span class="co">#&gt;  - attr(*, &quot;variable.labels&quot;)= chr  &quot;ID&quot; &quot;Congestive heart failure&quot; &quot;Cardiac arrhythmias&quot; &quot;Valvular disease&quot; ...</span></a></code></pre></div>
 <p>Finally, the Elixhauser score based on ICD-10 data:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">elixhauser10 &lt;-<span class="st"> </span><span class="kw">comorbidity</span>(<span class="dt">x =</span> data10, <span class="dt">id =</span> <span class="st">&quot;id&quot;</span>, <span class="dt">code =</span> <span class="st">&quot;code&quot;</span>, <span class="dt">score =</span> <span class="st">&quot;elixhauser&quot;</span>, <span class="dt">icd =</span> <span class="st">&quot;icd10&quot;</span>)</a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="kw">str</span>(elixhauser10)</a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt; &#39;data.frame&#39;:    10 obs. of  36 variables:</span></a>
-<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt;  $ id      : chr  &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...</span></a>
-<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt;  $ chf     : num  0 1 0 0 0 0 0 0 0 1</span></a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt;  $ carit   : num  0 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt;  $ valv    : num  0 0 0 0 1 0 0 0 0 1</span></a>
-<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt;  $ pcd     : num  0 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt;  $ pvd     : num  1 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co">#&gt;  $ hypunc  : num  0 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="co">#&gt;  $ hypc    : num  0 0 0 0 1 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="co">#&gt;  $ para    : num  0 0 0 0 1 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb6-13" data-line-number="13"><span class="co">#&gt;  $ ond     : num  0 0 0 0 1 0 1 0 0 0</span></a>
-<a class="sourceLine" id="cb6-14" data-line-number="14"><span class="co">#&gt;  $ cpd     : num  0 0 0 0 0 0 0 1 0 0</span></a>
-<a class="sourceLine" id="cb6-15" data-line-number="15"><span class="co">#&gt;  $ diabunc : num  0 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb6-16" data-line-number="16"><span class="co">#&gt;  $ diabc   : num  0 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb6-17" data-line-number="17"><span class="co">#&gt;  $ hypothy : num  0 1 0 0 0 0 0 0 1 0</span></a>
-<a class="sourceLine" id="cb6-18" data-line-number="18"><span class="co">#&gt;  $ rf      : num  1 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb6-19" data-line-number="19"><span class="co">#&gt;  $ ld      : num  0 0 0 0 1 1 0 0 0 0</span></a>
-<a class="sourceLine" id="cb6-20" data-line-number="20"><span class="co">#&gt;  $ pud     : num  0 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb6-21" data-line-number="21"><span class="co">#&gt;  $ aids    : num  0 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb6-22" data-line-number="22"><span class="co">#&gt;  $ lymph   : num  0 0 0 0 0 0 0 0 0 1</span></a>
-<a class="sourceLine" id="cb6-23" data-line-number="23"><span class="co">#&gt;  $ metacanc: num  0 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb6-24" data-line-number="24"><span class="co">#&gt;  $ solidtum: num  0 1 0 1 1 1 1 1 0 0</span></a>
-<a class="sourceLine" id="cb6-25" data-line-number="25"><span class="co">#&gt;  $ rheumd  : num  0 0 0 1 0 1 0 0 0 1</span></a>
-<a class="sourceLine" id="cb6-26" data-line-number="26"><span class="co">#&gt;  $ coag    : num  0 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb6-27" data-line-number="27"><span class="co">#&gt;  $ obes    : num  0 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb6-28" data-line-number="28"><span class="co">#&gt;  $ wloss   : num  0 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb6-29" data-line-number="29"><span class="co">#&gt;  $ fed     : num  0 0 0 0 0 0 0 0 0 1</span></a>
-<a class="sourceLine" id="cb6-30" data-line-number="30"><span class="co">#&gt;  $ blane   : num  0 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb6-31" data-line-number="31"><span class="co">#&gt;  $ dane    : num  0 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb6-32" data-line-number="32"><span class="co">#&gt;  $ alcohol : num  0 1 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb6-33" data-line-number="33"><span class="co">#&gt;  $ drug    : num  0 0 1 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb6-34" data-line-number="34"><span class="co">#&gt;  $ psycho  : num  0 0 0 0 0 0 0 0 0 1</span></a>
-<a class="sourceLine" id="cb6-35" data-line-number="35"><span class="co">#&gt;  $ depre   : num  0 0 0 0 0 0 0 0 0 0</span></a>
-<a class="sourceLine" id="cb6-36" data-line-number="36"><span class="co">#&gt;  $ score   : num  2 4 1 2 6 3 2 2 1 6</span></a>
-<a class="sourceLine" id="cb6-37" data-line-number="37"><span class="co">#&gt;  $ index   : Factor w/ 4 levels &quot;&lt;0&quot;,&quot;0&quot;,&quot;1-4&quot;,..: 3 3 3 3 4 3 3 3 3 4</span></a>
-<a class="sourceLine" id="cb6-38" data-line-number="38"><span class="co">#&gt;  $ wscore  : num  9 9 -7 7 20 11 12 10 0 15</span></a>
-<a class="sourceLine" id="cb6-39" data-line-number="39"><span class="co">#&gt;  $ windex  : Factor w/ 4 levels &quot;&lt;0&quot;,&quot;0&quot;,&quot;1-4&quot;,..: 4 4 1 4 4 4 4 4 2 4</span></a>
-<a class="sourceLine" id="cb6-40" data-line-number="40"><span class="co">#&gt;  - attr(*, &quot;variable.labels&quot;)= chr  &quot;ID&quot; &quot;Congestive heart failure&quot; &quot;Cardiac arrhythmias&quot; &quot;Valvular disease&quot; ...</span></a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">elixhauser10 &lt;-<span class="st"> </span><span class="kw">comorbidity</span>(<span class="dt">x =</span> data10, <span class="dt">id =</span> <span class="st">&quot;id&quot;</span>, <span class="dt">code =</span> <span class="st">&quot;code&quot;</span>, <span class="dt">score =</span> <span class="st">&quot;elixhauser&quot;</span>, <span class="dt">icd =</span> <span class="st">&quot;icd10&quot;</span>)</a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="kw">str</span>(elixhauser10)</a>
+<a class="sourceLine" id="cb6-3" title="3"><span class="co">#&gt; &#39;data.frame&#39;:    10 obs. of  38 variables:</span></a>
+<a class="sourceLine" id="cb6-4" title="4"><span class="co">#&gt;  $ id         : chr  &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...</span></a>
+<a class="sourceLine" id="cb6-5" title="5"><span class="co">#&gt;  $ chf        : num  0 0 0 1 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb6-6" title="6"><span class="co">#&gt;  $ carit      : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb6-7" title="7"><span class="co">#&gt;  $ valv       : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb6-8" title="8"><span class="co">#&gt;  $ pcd        : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb6-9" title="9"><span class="co">#&gt;  $ pvd        : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb6-10" title="10"><span class="co">#&gt;  $ hypunc     : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb6-11" title="11"><span class="co">#&gt;  $ hypc       : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb6-12" title="12"><span class="co">#&gt;  $ para       : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb6-13" title="13"><span class="co">#&gt;  $ ond        : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb6-14" title="14"><span class="co">#&gt;  $ cpd        : num  0 0 0 0 0 1 0 1 0 0</span></a>
+<a class="sourceLine" id="cb6-15" title="15"><span class="co">#&gt;  $ diabunc    : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb6-16" title="16"><span class="co">#&gt;  $ diabc      : num  0 0 0 0 0 1 0 0 0 0</span></a>
+<a class="sourceLine" id="cb6-17" title="17"><span class="co">#&gt;  $ hypothy    : num  0 0 0 1 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb6-18" title="18"><span class="co">#&gt;  $ rf         : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb6-19" title="19"><span class="co">#&gt;  $ ld         : num  0 0 0 0 1 0 0 0 1 0</span></a>
+<a class="sourceLine" id="cb6-20" title="20"><span class="co">#&gt;  $ pud        : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb6-21" title="21"><span class="co">#&gt;  $ aids       : num  0 0 0 1 0 0 0 0 1 0</span></a>
+<a class="sourceLine" id="cb6-22" title="22"><span class="co">#&gt;  $ lymph      : num  0 0 0 0 0 0 0 0 0 1</span></a>
+<a class="sourceLine" id="cb6-23" title="23"><span class="co">#&gt;  $ metacanc   : num  0 0 0 1 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb6-24" title="24"><span class="co">#&gt;  $ solidtum   : num  1 0 1 0 1 1 0 1 0 1</span></a>
+<a class="sourceLine" id="cb6-25" title="25"><span class="co">#&gt;  $ rheumd     : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb6-26" title="26"><span class="co">#&gt;  $ coag       : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb6-27" title="27"><span class="co">#&gt;  $ obes       : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb6-28" title="28"><span class="co">#&gt;  $ wloss      : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb6-29" title="29"><span class="co">#&gt;  $ fed        : num  1 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb6-30" title="30"><span class="co">#&gt;  $ blane      : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb6-31" title="31"><span class="co">#&gt;  $ dane       : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb6-32" title="32"><span class="co">#&gt;  $ alcohol    : num  0 0 0 0 0 1 1 0 0 0</span></a>
+<a class="sourceLine" id="cb6-33" title="33"><span class="co">#&gt;  $ drug       : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb6-34" title="34"><span class="co">#&gt;  $ psycho     : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb6-35" title="35"><span class="co">#&gt;  $ depre      : num  0 0 0 0 0 0 0 0 0 0</span></a>
+<a class="sourceLine" id="cb6-36" title="36"><span class="co">#&gt;  $ score      : num  2 0 1 4 2 4 1 2 2 2</span></a>
+<a class="sourceLine" id="cb6-37" title="37"><span class="co">#&gt;  $ index      : Factor w/ 4 levels &quot;&lt;0&quot;,&quot;0&quot;,&quot;1-4&quot;,..: 3 2 3 3 3 3 3 3 3 3</span></a>
+<a class="sourceLine" id="cb6-38" title="38"><span class="co">#&gt;  $ wscore_ahrq: num  18 0 7 23 11 6 -1 10 4 13</span></a>
+<a class="sourceLine" id="cb6-39" title="39"><span class="co">#&gt;  $ wscore_vw  : num  9 0 4 19 15 7 0 7 11 13</span></a>
+<a class="sourceLine" id="cb6-40" title="40"><span class="co">#&gt;  $ windex_ahrq: Factor w/ 4 levels &quot;&lt;0&quot;,&quot;0&quot;,&quot;1-4&quot;,..: 4 2 4 4 4 4 1 4 3 4</span></a>
+<a class="sourceLine" id="cb6-41" title="41"><span class="co">#&gt;  $ windex_vw  : Factor w/ 4 levels &quot;&lt;0&quot;,&quot;0&quot;,&quot;1-4&quot;,..: 4 2 3 4 4 4 2 4 4 4</span></a>
+<a class="sourceLine" id="cb6-42" title="42"><span class="co">#&gt;  - attr(*, &quot;variable.labels&quot;)= chr  &quot;ID&quot; &quot;Congestive heart failure&quot; &quot;Cardiac arrhythmias&quot; &quot;Valvular disease&quot; ...</span></a></code></pre></div>
 </div>
 <div id="references" class="section level1">
 <h1>References</h1>
 <ul>
-<li><p>Charlson ME, Pompei P, Ales KL, et al. <em>A new method of classifying prognostic comorbidity in longitudinal studies: development and validation</em>. Journal of Chronic Diseases 1987; 40:373-383. DOI: <a href="https://doi.org/10.1016/0021-9681(87)90171-8">10.1016/0021-9681(87)90171-8</a></p></li>
+<li><p>Charlson ME, Pompei P, Ales KL, et al. <em>A new method of classifying prognostic comorbidity in longitudinal studies: development and validation</em>. Journal of Chronic Diseases 1987; 40:373-383. DOI: <a href="https://doi.org/10.1016/0021-9681(87)90171-8">10.1016/0021-9681(87)90171-8</a></p></li>
 <li><p>Sharabiani MT, Aylin P, Bottle A. <em>Systematic review of comorbidity indices for administrative data</em>. Medical Care 2012; 50(12):1109-1118. DOI: <a href="https://doi.org/10.1097/MLR.0b013e31825f64d0">10.1097/MLR.0b013e31825f64d0</a></p></li>
-<li><p>Quan H, Sundararajan V, Halfon P, Fong A, Burnand B, Luthi JC, et al. <em>Coding algorithms for defining comorbidities in ICD-9-CM and ICD-10 administrative data</em>. Medical Care 2005; 43(11):1130-1139. DOI: <a href="https://doi.org/10.1097/01.mlr.0000182534.19832.83">10.1097/01.mlr.0000182534.19832.83</a></p></li>
+<li><p>Quan H, Sundararajan V, Halfon P, Fong A, Burnand B, Luthi JC, et al. <em>Coding algorithms for defining comorbidities in ICD-9-CM and ICD-10 administrative data</em>. Medical Care 2005; 43(11):1130-1139. DOI: <a href="https://doi.org/10.1097/01.mlr.0000182534.19832.83">10.1097/01.mlr.0000182534.19832.83</a></p></li>
 <li><p>Menendez ME, Neuhaus V, van Dijk CN, Ring D. <em>The Elixhauser comorbidity method outperforms the Charlson index in predicting inpatient death after orthopaedic surgery</em>. Clinical Orthopaedics and Related Research 2014; 472(9):2878-2886. DOI: <a href="https://doi.org/10.1007/s11999-014-3686-7">10.1007/s11999-014-3686-7</a></p></li>
 <li><p>Elixhauser A, Steiner C, Harris DR and Coffey RM. <em>Comorbidity measures for use with administrative data</em>. Medical Care 1998; 36(1):8-27. DOI: <a href="https://doi.org/10.1097/00005650-199801000-00004">10.1097/00005650-199801000-00004</a></p></li>
 <li><p>Garland A, Fransoo R, Olafson K, Ramsey C, Yogendran M, Chateau D, McGowan K. <em>The epidemiology and outcomes of critical illness in Manitoba</em>. Winnipeg, MB: Manitoba Centre for Health Policy, 2012. URL: <a href="http://mchp-appserv.cpe.umanitoba.ca/reference/MCHP_ICU_Report_WEB_(20120403).pdf" class="uri">http://mchp-appserv.cpe.umanitoba.ca/reference/MCHP_ICU_Report_WEB_(20120403).pdf</a></p></li>

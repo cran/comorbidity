@@ -3,7 +3,7 @@
 
 # comorbidity <img src="man/figures/hex.png" width = "150" align="right" />
 
-2018-10-08
+2019-03-22
 
 [![AppVeyor Build
 Status](https://ci.appveyor.com/api/projects/status/github/ellessenne/comorbidity?branch=master&svg=true)](https://ci.appveyor.com/project/ellessenne/comorbidity)
@@ -167,8 +167,7 @@ x <- data.frame(
 )
 ```
 
-We could compute the Charlson score, index, and each comorbidity
-domain:
+We could compute the Charlson score, index, and each comorbidity domain:
 
 ``` r
 charlson <- comorbidity(x = x, id = "id", code = "code", score = "charlson", icd = "icd10")
@@ -183,8 +182,7 @@ charlson
 #> 3    0        0    0     0     0      0      0
 ```
 
-The default is to assume ICD-10
-codes:
+The default is to assume ICD-10 codes:
 
 ``` r
 charlson.default <- comorbidity(x = x, id = "id", code = "code", score = "charlson")
@@ -192,8 +190,7 @@ all.equal(charlson, charlson.default)
 #> [1] TRUE
 ```
 
-Alternatively, we could compute the Elixhauser
-score:
+Alternatively, we could compute the Elixhauser score:
 
 ``` r
 elixhauser <- comorbidity(x = x, id = "id", code = "code", score = "elixhauser", icd = "icd10")
@@ -206,10 +203,14 @@ elixhauser
 #> 1  1   0    0     0        0        0      0    0    0     0   0     0    0
 #> 2  0   0    0     0        0        1      0    0    0     0   0     0    0
 #> 3  0   0    0     0        0        0      0    0    0     0   0     0    0
-#>   alcohol drug psycho depre score index wscore windex
-#> 1       0    0      0     0     1   1-4      4    1-4
-#> 2       0    0      0     0     2   1-4     13    >=5
-#> 3       0    0      0     0     0     0      0      0
+#>   alcohol drug psycho depre score index wscore_ahrq wscore_vw windex_ahrq
+#> 1       0    0      0     0     1   1-4           4        11         1-4
+#> 2       0    0      0     0     2   1-4          13         9         >=5
+#> 3       0    0      0     0     0     0           0         0           0
+#>   windex_vw
+#> 1       >=5
+#> 2       >=5
+#> 3         0
 ```
 
 Conversely, say we have 5 individuals with a total of 100 ICD-9
@@ -226,8 +227,7 @@ x <- data.frame(
 
 The Charlson and Elixhauser comorbidity codes can be easily computed:
 
-We could compute the Charlson score, index, and each comorbidity
-domain:
+We could compute the Charlson score, index, and each comorbidity domain:
 
 ``` r
 charlson9 <- comorbidity(x = x, id = "id", code = "code", score = "charlson", icd = "icd9")
@@ -246,8 +246,7 @@ charlson9
 #> 5    0        0    0     1   1-2      2    1-2
 ```
 
-Alternatively, we could compute the Elixhauser
-score:
+Alternatively, we could compute the Elixhauser score:
 
 ``` r
 elixhauser9 <- comorbidity(x = x, id = "id", code = "code", score = "elixhauser", icd = "icd9")
@@ -264,13 +263,22 @@ elixhauser9
 #> 3  0   0    0     1        0        0      0    0    0     0   0     0    0
 #> 4  0   0    0     0        0        1      0    0    0     0   0     0    0
 #> 5  0   0    0     0        0        1      0    0    0     0   0     0    0
-#>   alcohol drug psycho depre score index wscore windex
-#> 1       0    0      0     0     1   1-4      7    >=5
-#> 2       0    1      0     0     5   >=5      7    >=5
-#> 3       1    0      0     0     3   1-4      2    1-4
-#> 4       0    0      0     1     3   1-4      1    1-4
-#> 5       0    0      0     0     2   1-4     13    >=5
+#>   alcohol drug psycho depre score index wscore_ahrq wscore_vw windex_ahrq
+#> 1       0    0      0     0     1   1-4           7         4         >=5
+#> 2       0    1      0     0     5   >=5           7        17         >=5
+#> 3       1    0      0     0     3   1-4           2         9         1-4
+#> 4       0    0      0     1     3   1-4           1         1         1-4
+#> 5       0    0      0     0     2   1-4          13         8         >=5
+#>   windex_vw
+#> 1       1-4
+#> 2       >=5
+#> 3       >=5
+#> 4       1-4
+#> 5       >=5
 ```
+
+The weighted Elixhauser score is computed using both the AHRQ and the
+van Walraven algorithm (`wscore_ahrq` and `wscore_vw`).
 
 ## Citation
 
@@ -310,14 +318,20 @@ ICD-9-based Elixhauser score is according to the AHRQ formulation (Moore
 original formulation by Charlson *et al*. in 1987, while weights for the
 Elixhauser score are based on work by van Walraven *et al*. Finally, the
 categorisation of scores and weighted scores is based on work by
-Menendez *et al*.
+Menendez *et al*. Further details on each algorithm are included in the
+package vignette, which you can access by typing the following in the R
+console:
+
+``` r
+vignette("comorbidityscores", package = "comorbidity")
+```
 
   - Quan H, Sundararajan V, Halfon P, Fong A, Burnand B, Luthi JC, et
-    al. *Coding algorithms for defining comorbidities in ICD-9-CM and
+    al. *Coding algorithms for defining comorbidities in ICD-9-CM and
     ICD-10 administrative data*. Medical Care 2005; 43(11):1130-1139.
     DOI:
     [10.1097/01.mlr.0000182534.19832.83](https://doi.org/10.1097/01.mlr.0000182534.19832.83)
-  - Charlson ME, Pompei P, Ales KL, et al. *A new method of classifying
+  - Charlson ME, Pompei P, Ales KL, et al. *A new method of classifying
     prognostic comorbidity in longitudinal studies: development and
     validation*. Journal of Chronic Diseases 1987; 40:373-383. DOI:
     [10.1016/0021-9681(87)90171-8](https://doi.org/10.1016/0021-9681\(87\)90171-8)
@@ -344,6 +358,6 @@ Menendez *et al*.
 ## Copyright
 
 The icon for the hex sticker was made by
-[Freepik](http://www.freepik.com) from
-[Flaticon](https://www.flaticon.com) and is licensed by [CC 3.0
-BY](http://creativecommons.org/licenses/by/3.0/).
+[monkik](https://www.flaticon.com/authors/monkik) from
+[www.flaticon.com](https://www.flaticon.com), and is licensed by
+[Creative Commons BY 3.0](http://creativecommons.org/licenses/by/3.0).
