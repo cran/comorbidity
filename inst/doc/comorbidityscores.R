@@ -25,18 +25,18 @@ data10 <- data.frame(
 data10 <- data10[order(data10$id), ]
 
 ## ----charlson-9-----------------------------------------------------------------------------------
-charlson9 <- comorbidity(x = data9, id = "id", code = "code", score = "charlson", icd = "icd9")
+charlson9 <- comorbidity(x = data9, id = "id", code = "code", score = "charlson", icd = "icd9", assign0 = FALSE)
 str(charlson9)
 
 ## ----charlson-10----------------------------------------------------------------------------------
-charlson10 <- comorbidity(x = data10, id = "id", code = "code", score = "charlson", icd = "icd10")
+charlson10 <- comorbidity(x = data10, id = "id", code = "code", score = "charlson", icd = "icd10", assign0 = FALSE)
 str(charlson10)
 
 ## ----elixhauser-9---------------------------------------------------------------------------------
-elixhauser9 <- comorbidity(x = data9, id = "id", code = "code", score = "elixhauser", icd = "icd9")
+elixhauser9 <- comorbidity(x = data9, id = "id", code = "code", score = "elixhauser", icd = "icd9", assign0 = FALSE)
 str(elixhauser9)
 
 ## ----elixhauser-10--------------------------------------------------------------------------------
-elixhauser10 <- comorbidity(x = data10, id = "id", code = "code", score = "elixhauser", icd = "icd10")
+elixhauser10 <- comorbidity(x = data10, id = "id", code = "code", score = "elixhauser", icd = "icd10", assign0 = FALSE)
 str(elixhauser10)
 
