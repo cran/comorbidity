@@ -1,3 +1,11 @@
+# comorbidity 0.5.0
+
+* `comorbidity` is now 10+ times faster, thanks to [Jonathan Williman](https://github.com/jwilliman) contributing code based on the `data.table` package;
+
+* Fixed typo in vignette regarding weighting algorithm for the AHRQ Elixhauser comorbidity score (#14, thanks to @cornflakegrl);
+
+* Added `pkgdown` website: https://ellessenne.github.io/comorbidity.
+
 # comorbidity 0.4.1
 
 * Fixed bug in regex patterns (#10, thanks to @francisco003 for reporting it and @salmasian for the pull request).

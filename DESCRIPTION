@@ -1,6 +1,6 @@
 Type: Package
 Package: comorbidity
-Version: 0.4.1
+Version: 0.5.0
 Title: Computing Comorbidity Scores
 Description: Computing comorbidity scores such as the weighted Charlson score
   (Charlson, 1987 <doi:10.1016/0021-9681(87)90171-8>) and the Elixhauser
@@ -16,14 +16,19 @@ Authors@R: c(
          family = "Salmasian", 
          role = "ctb", 
          email = "hsalmasian@bwh.harvard.edu", 
-         comment = "ICD-9-CM scores")
+         comment = "ICD-9-CM scores"),
+  person(given = "Jonathan", 
+         family = "Williman", 
+         role = "ctb", 
+         email = "jonathan.williman@otago.ac.nz", 
+         comment = c(ORCID = "0000-0001-5080-4435"))
   )
 Maintainer: Alessandro Gasparini <ag475@leicester.ac.uk>
-URL: https://github.com/ellessenne/comorbidity
+URL: https://ellessenne.github.io/comorbidity
 BugReports: https://github.com/ellessenne/comorbidity/issues
 License: GPL (>= 3)
 Depends: R (>= 2.10)
-Imports: checkmate, parallel, stats, stringi, utils
+Imports: checkmate, data.table, reshape2, stats, utils
 Suggests: covr, knitr, rmarkdown, testthat
 RoxygenNote: 6.1.1
 Encoding: UTF-8
@@ -32,9 +37,10 @@ ByteCompile: true
 VignetteBuilder: knitr
 Language: en_GB
 NeedsCompilation: no
-Packaged: 2019-06-27 12:44:59 UTC; ellessenne
+Packaged: 2019-08-20 14:17:32 UTC; ellessenne
 Author: Alessandro Gasparini [aut, cre]
     (<https://orcid.org/0000-0002-8319-7624>),
-  Hojjat Salmasian [ctb] (ICD-9-CM scores)
+  Hojjat Salmasian [ctb] (ICD-9-CM scores),
+  Jonathan Williman [ctb] (<https://orcid.org/0000-0001-5080-4435>)
 Repository: CRAN
-Date/Publication: 2019-06-27 13:00:03 UTC
+Date/Publication: 2019-08-20 14:40:02 UTC
