@@ -1,3 +1,9 @@
+# comorbidity 0.5.1
+
+* The `melt` generic in `data.table` has been deprecated; the dependency on `reshape2` has now been removed;
+
+* Fixed bugs introduced by switching to `data.table` in `comorbidity` 0.5.0: column names `id` and `code` were expecting these specific names, now fixed and behaves as expected.
+
 # comorbidity 0.5.0
 
 * `comorbidity` is now 10+ times faster, thanks to [Jonathan Williman](https://github.com/jwilliman) contributing code based on the `data.table` package;

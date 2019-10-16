@@ -3,7 +3,7 @@
 
 # comorbidity <img src="man/figures/hex.png" width = "150" align="right" />
 
-2019-08-17
+2019-10-15
 
 [![AppVeyor Build
 Status](https://ci.appveyor.com/api/projects/status/github/ellessenne/comorbidity?branch=master&svg=true)](https://ci.appveyor.com/project/ellessenne/comorbidity)
@@ -36,8 +36,8 @@ install.packages("comorbidity")
 Alternatively, you can install the development version from GitHub with:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("ellessenne/comorbidity")
+# install.packages("remotes")
+remotes::install_github("ellessenne/comorbidity")
 ```
 
 ## Simulating ICD-10 codes

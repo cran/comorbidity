@@ -147,27 +147,27 @@ comorbidity <- function(x, id, code, score, icd = "icd10", assign0, factorise = 
   ### Turn x into a DT
   data.table::setDT(x)
 
-  ### The following is to deal with the "no visible global function definition for ..." NOTEs
-  . <- NULL
-  L1 <- NULL
-  `:=` <- NULL
-
   ### Get list of unique codes used in dataset that match comorbidities
   loc <- sapply(regex, grep, unique(x[[code]]), value = TRUE)
-  loc <- data.table::melt(loc, value.name = code)
+  loc <- utils::stack(loc)
+  names(loc)[1] <- code
 
   ### Merge list with original data.table (data.frame)
-  x <- unique(merge(x, loc, all.x = TRUE, allow.cartesian = TRUE)[, code := NULL])
+  x <- merge(x, loc, all.x = TRUE, allow.cartesian = TRUE)
+  x[[code]] <- NULL
+  x <- unique(x)
 
   ### Spread wide
-  x <- data.table::dcast.data.table(x[, .(id, L1, value = 1L)], id ~ L1, fill = 0)
+  xin <- x[, c(id, "ind"), with = FALSE]
+  xin[, value := 1L]
+  x <- data.table::dcast.data.table(xin, stats::as.formula(paste(id, "~ ind")), fill = 0)
   x[["NA"]] <- NULL
 
   ### Add missing columns
   for (col in names(regex)) {
     if (is.null(x[[col]])) x[[col]] <- 0
   }
-  data.table::setcolorder(x, c("id", names(regex)))
+  data.table::setcolorder(x, c(id, names(regex)))
 
   ### Turn internal DT into a DF
   data.table::setDF(x)
