@@ -1,8 +1,9 @@
-bba92e628bcb80b0d3cd4046c8157fe0 *DESCRIPTION
+43445a0ea47679cdad4a6c363d0f26de *DESCRIPTION
 7cfee911cd25371c26b847d95a19cb47 *NAMESPACE
-290ea4042a691ea16894bb26c989830e *NEWS.md
+5d12fdaa8712eca5ee91e7061b51554b *NEWS.md
+4389b7b451780cc969b97f1cbdaa4b6e *R/check_output.R
 a29be63787e915670f1ed11ae247d14f *R/comorbidity-package.R
-349600838c69c41af3f2b17587785770 *R/comorbidity.R
+1b794cd4cc2a907343c91b75e3266b5e *R/comorbidity.R
 c1a5f85f7614d608dce0283e06dac672 *R/data.R
 4592339a7241d0d4bf272e77b282bc7e *R/factorise.R
 dc4745288ac36f4bc18e00c295bc7431 *R/labelled.R
@@ -10,7 +11,7 @@ c9819ba0071aa4abb538e56f54d4cbe0 *R/sample_diag.R
 0329ad21cb688d338cd8469c05603366 *R/sysdata.rda
 86e491d43bdf7fc5a5217d639219de51 *R/tidy.R
 cf10a78321b4342575c1b5449f8c8535 *README.md
-f7c9365c2bd4202430a339b66693f6f1 *build/partial.rdb
+cbaa71aa1e270948d5f4ae30ced27abb *build/partial.rdb
 de8375c70c606625db38f7333c197a86 *build/vignette.rds
 c477d73aa628dd4a31a1d150e6c4530f *data/australia10.rda
 2c2ebc6fe94235509f3af7abf2310f9f *data/datalist
@@ -23,7 +24,7 @@ a551de6af59414e5fb3e3c3999a0e641 *data/nhds2010.rda
 47840da9353a72a8462b03b492d9f876 *inst/CITATION
 17fd2c78a93ba1314d28ad4ac34b73f9 *inst/doc/comorbidityscores.R
 e5ff5bab8e3cc022b127fb1db64a1af3 *inst/doc/comorbidityscores.Rmd
-8b9827d2b8777c9cad8be74fb5ac9e62 *inst/doc/comorbidityscores.html
+db652b971062daf5d82781844ba79677 *inst/doc/comorbidityscores.html
 3914f1b4bb257f65c011b6b675a61dd0 *man/australia10.Rd
 c75dbb0a54b307c766982096e4598c06 *man/comorbidity-package.Rd
 3b571c4334cacb66d0d621c9fa0ec154 *man/comorbidity.Rd
@@ -39,7 +40,7 @@ aac8adeda93c76493535f55cbc6a8a00 *man/sample_diag.Rd
 6b4f1ffeb734d82f1e66c8678494e5b7 *tests/testthat/test-#20.R
 89faafd4f603e35d7ae4a23e9c53c6b5 *tests/testthat/test-charlson-icd10.R
 4854347768414744e08b28d903ed3e0d *tests/testthat/test-charlson-icd9.R
-25dbfc0fbcd4a70fd12f843657a1aa48 *tests/testthat/test-comorbidity.R
+d7ca81fc12963c0d620aca99a61b7665 *tests/testthat/test-comorbidity.R
 edcbd0cce867f95c72e27481bdeaef3e *tests/testthat/test-data.R
 81310286dc29387d78e3d8a87be8a0a9 *tests/testthat/test-elixhauser-icd10.R
 d03790a745a7924a10512d97cd7759f0 *tests/testthat/test-elixhauser-icd9.R

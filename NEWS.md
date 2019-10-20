@@ -1,3 +1,7 @@
+# comorbidity 0.5.2
+
+* Fixed another bug introduced by the switch to `data.table` that only occurred when the input dataset had extra columns other than `id` and `code`.
+
 # comorbidity 0.5.1
 
 * The `melt` generic in `data.table` has been deprecated; the dependency on `reshape2` has now been removed;
