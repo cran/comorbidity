@@ -4,7 +4,8 @@
 \name{nhds2010}
 \alias{nhds2010}
 \title{Adult same-day discharges, 2010}
-\format{A data frame with 2,210 rows and 15 variables:
+\format{
+A data frame with 2,210 rows and 15 variables:
 \describe{
 \item{ageu}{Units for age}
 \item{age}{Age}
@@ -21,12 +22,13 @@
 \item{pr1}{Procedure 1}
 \item{wgt}{Frequency weight}
 \item{recid}{Order of record (raw data)}
-}}
+}
+}
 \usage{
 nhds2010
 }
 \description{
-A dataset containing adult same-day discharges from 2010.
+A dataset containing adult same-day discharges from 2010, obtained from Stata 17.
 }
 \note{
 The R code used to download and process the dataset from Stata is available \href{https://raw.githubusercontent.com/ellessenne/comorbidity/master/data-raw/make-data.R}{here}.

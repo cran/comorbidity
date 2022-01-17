@@ -4,17 +4,19 @@
 \name{australia10}
 \alias{australia10}
 \title{Australian mortality data, 2010}
-\format{A data frame with 3,322 rows and 3 variables:
+\format{
+A data frame with 3,322 rows and 3 variables:
 \describe{
 \item{cause}{ICD-10 code representing cause of death}
 \item{sex}{Gender}
 \item{deaths}{Number of deaths}
-}}
+}
+}
 \usage{
 australia10
 }
 \description{
-A dataset containing Australian mortality data, obtained from Stata version 15.
+A dataset containing Australian mortality data, obtained from Stata 17.
 }
 \note{
 The R code used to download and process the dataset from Stata is available \href{https://raw.githubusercontent.com/ellessenne/comorbidity/master/data-raw/make-data.R}{here}.
