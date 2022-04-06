@@ -32,12 +32,12 @@
 #'
 #' For the Charlson score, the following variables are included in the dataset:
 #' * The `id` variable as defined by the user;
-#' * `ami`, for acute myocardial infarction;
+#' * `mi`, for myocardial infarction;
 #' * `chf`, for congestive heart failure;
 #' * `pvd`, for peripheral vascular disease;
 #' * `cevd`, for cerebrovascular disease;
 #' * `dementia`, for dementia;
-#' * `copd`, chronic obstructive pulmonary disease;
+#' * `cpd`, for chronic pulmonary disease;
 #' * `rheumd`, for rheumatoid disease;
 #' * `pud`, for peptic ulcer disease;
 #' * `mld`, for mild liver disease;
@@ -48,7 +48,8 @@
 #' * `canc`, for cancer (any malignancy);
 #' * `msld`, for moderate or severe liver disease;
 #' * `metacanc`, for metastatic solid tumour;
-#' * `aids`, for AIDS/HIV;
+#' * `aids`, for AIDS/HIV.
+#' Please note that we combine "chronic obstructive pulmonary disease" and "chronic other pulmonary disease" for the Swedish version of the Charlson index, for comparability (and compatibility) with other definitions/implementations.
 #'
 #' Conversely, for the Elixhauser score the dataset contains the following variables:
 #' * The `id` variable as defined by the user;
@@ -111,7 +112,22 @@
 #' @export
 
 comorbidity <- function(x, id, code, map, assign0, labelled = TRUE, tidy.codes = TRUE) {
-
+  # set.seed(1)
+  # x <- data.frame(
+  #   id = 1,
+  #   code = sample_diag(10),
+  #   stringsAsFactors = FALSE
+  # )
+  # xa <- data.frame(id = 1:2, code = NA_character_)
+  # xm <- rbind(x, xa)
+  #
+  # x = xm
+  # id = "id"
+  # code = "code"
+  # map = "charlson_icd10_quan"
+  # assign0 = FALSE
+  # labelled = T
+  # tidy.codes = T
   ### Check arguments
   arg_checks <- checkmate::makeAssertCollection()
   # x must be a data.frame (or a data.table)
@@ -163,30 +179,8 @@ comorbidity <- function(x, id, code, map, assign0, labelled = TRUE, tidy.codes =
   ### Turn x into a DT
   data.table::setDT(x)
 
-  ### Get list of unique codes used in dataset that match comorbidities
-  ..cd <- unique(x[[code]])
-  loc <- sapply(X = regex, FUN = function(p) stringi::stri_subset_regex(str = ..cd, pattern = p))
-  loc <- utils::stack(loc)
-  data.table::setDT(loc)
-  data.table::setnames(x = loc, new = c(code, "ind"))
-
-  ### Merge list with original data.table (data.frame)
-  x <- merge(x, loc, all.x = TRUE, allow.cartesian = TRUE, by = code)
-  x[, (code) := NULL]
-  x <- unique(x)
-
-  ### Spread wide
-  mv <- c(id, "ind")
-  xin <- x[, ..mv]
-  xin[, value := 1L]
-  x <- data.table::dcast.data.table(xin, stats::as.formula(paste(id, "~ ind")), fill = 0)
-  if (!is.null(x[["NA"]])) x[, `NA` := NULL]
-
-  ### Add missing columns
-  for (col in names(regex)) {
-    if (is.null(x[[col]])) x[, (col) := 0L]
-  }
-  data.table::setcolorder(x, c(id, names(regex)))
+  ### Match comorbidity mapping
+  x <- .matchit(x = x, id = id, code = code, regex = regex)
 
   ### Assign zero-values to avoid double-counting comorbidities, if requested
   if (assign0) {

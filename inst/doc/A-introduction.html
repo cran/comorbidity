@@ -12,7 +12,7 @@
 
 <meta name="author" content="Alessandro Gasparini" />
 
-<meta name="date" content="2022-01-17" />
+<meta name="date" content="2022-04-06" />
 
 <title>Introduction</title>
 
@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   ul.task-list{list-style: none;}
     </style>
+
 
 
 <style type="text/css">
@@ -333,7 +334,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 <h1 class="title toc-ignore">Introduction</h1>
 <h4 class="author">Alessandro Gasparini</h4>
-<h4 class="date">2022-01-17</h4>
+<h4 class="date">2022-04-06</h4>
 
 
 
@@ -343,7 +344,7 @@ comorbidity scores.</p>
 <p>For this, we will simulate a dataset with 100 patients and 10000
 ICD-10 codes using the <code>sample_diag()</code> function:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(comorbidity)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; This is {comorbidity} version 1.0.0.</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; This is {comorbidity} version 1.0.2.</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; A lot has changed since the last release on CRAN, please check-out breaking changes here:</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -&gt; https://ellessenne.github.io/comorbidity/articles/C-changes.html</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
@@ -376,12 +377,12 @@ al. (2005) version of the Charlson Comorbidity Index:</p>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(charlson_df)</span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Classes &#39;comorbidity&#39; and &#39;data.frame&#39;:  100 obs. of  18 variables:</span></span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ id      : int  1 2 3 4 5 6 7 8 9 10 ...</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ ami     : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ mi      : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ chf     : int  0 1 1 0 0 1 1 0 1 1 ...</span></span>
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ pvd     : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ cevd    : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ dementia: int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ copd    : int  1 1 1 1 0 0 1 1 1 1 ...</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ cpd     : int  1 1 1 1 0 0 1 1 1 1 ...</span></span>
 <span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ rheumd  : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
 <span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ pud     : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
 <span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ mld     : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
