@@ -3,7 +3,7 @@
 
 # The {comorbidity} Package: Computing Comorbidity Scores <img src="man/figures/hex.png" width = "150" align="right" />
 
-Last updated: 2022-07-12
+Last updated: 2022-09-26 16:24:49
 
 <!-- badges: start -->
 
@@ -300,8 +300,8 @@ vignettes, which can be accessed on CRAN or directly from your R
 session:
 
 ``` r
-vignette("01-introduction", package = "comorbidity")
-vignette("02-comorbidity-scores", package = "comorbidity")
+vignette("A-introduction", package = "comorbidity")
+vignette("B-comorbidity-scores", package = "comorbidity")
 ```
 
 ## Copyright
