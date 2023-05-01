@@ -1,5 +1,5 @@
 Package: comorbidity
-Version: 1.0.5
+Version: 1.0.7
 Title: Computing Comorbidity Scores
 Description: Computing comorbidity indices and scores such as the weighted Charlson
   score (Charlson, 1987 <doi:10.1016/0021-9681(87)90171-8>) and the Elixhauser
@@ -7,7 +7,8 @@ Description: Computing comorbidity indices and scores such as the weighted Charl
   using ICD-9-CM or ICD-10 codes (Quan, 2005 <doi:10.1097/01.mlr.0000182534.19832.83>).
   Australian and Swedish modifications of the Charlson Comorbidity Index are available
   as well (Sundararajan, 2004 <doi:10.1016/j.jclinepi.2004.03.012> and Ludvigsson, 2021 
-  <doi:10.2147/CLEP.S282475>).
+  <doi:10.2147/CLEP.S282475>), together with different weighting algorithms for both
+  the Charlson and Elixhauser comorbidity scores.
 Authors@R: 
     c(person(given = "Alessandro",
              family = "Gasparini",
@@ -41,14 +42,14 @@ License: GPL (>= 3)
 Depends: R (>= 2.10)
 Imports: checkmate, data.table, stats, stringi, utils
 Suggests: covr, knitr, rmarkdown, testthat
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3
 Encoding: UTF-8
 LazyData: true
 ByteCompile: true
 VignetteBuilder: knitr
 Language: en_GB
 NeedsCompilation: no
-Packaged: 2022-09-26 15:09:24 UTC; ellessenne
+Packaged: 2023-05-01 16:32:23 UTC; ellessenne
 Author: Alessandro Gasparini [aut, cre]
     (<https://orcid.org/0000-0002-8319-7624>),
   Hojjat Salmasian [ctb] (ICD-9-CM scores),
@@ -57,4 +58,4 @@ Author: Alessandro Gasparini [aut, cre]
   Edmund Teo [ctb] (<https://orcid.org/0000-0003-3936-4082>)
 Maintainer: Alessandro Gasparini <alessandro@ellessenne.xyz>
 Repository: CRAN
-Date/Publication: 2022-09-26 15:50:02 UTC
+Date/Publication: 2023-05-01 17:10:06 UTC

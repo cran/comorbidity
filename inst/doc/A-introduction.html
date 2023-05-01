@@ -12,7 +12,7 @@
 
 <meta name="author" content="Alessandro Gasparini" />
 
-<meta name="date" content="2022-09-26" />
+<meta name="date" content="2023-05-01" />
 
 <title>Introduction</title>
 
@@ -340,7 +340,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 <h1 class="title toc-ignore">Introduction</h1>
 <h4 class="author">Alessandro Gasparini</h4>
-<h4 class="date">2022-09-26</h4>
+<h4 class="date">2023-05-01</h4>
 
 
 
@@ -349,19 +349,19 @@ identify comorbid conditions and to compute weighted (or unweighted)
 comorbidity scores.</p>
 <p>For this, we will simulate a dataset with 100 patients and 10000
 ICD-10 codes using the <code>sample_diag()</code> function:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(comorbidity)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="fu">sample</span>(<span class="fu">seq</span>(<span class="dv">100</span>), <span class="at">size =</span> <span class="dv">10000</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">code =</span> <span class="fu">sample_diag</span>(<span class="at">n =</span> <span class="dv">100</span>)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df[<span class="fu">order</span>(df<span class="sc">$</span>id, df<span class="sc">$</span>code), ]</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &#39;data.frame&#39;:    10000 obs. of  2 variables:</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ id  : int  1 1 1 1 1 1 1 1 1 1 ...</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ code: chr  &quot;A671&quot; &quot;B170&quot; &quot;C33&quot; &quot;C33&quot; ...</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(comorbidity)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>  <span class="at">id =</span> <span class="fu">sample</span>(<span class="fu">seq</span>(<span class="dv">100</span>), <span class="at">size =</span> <span class="dv">10000</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>  <span class="at">code =</span> <span class="fu">sample_diag</span>(<span class="at">n =</span> <span class="dv">100</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>)</span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a><span class="co"># Sort</span></span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>df <span class="ot">&lt;-</span> df[<span class="fu">order</span>(df<span class="sc">$</span>id, df<span class="sc">$</span>code), ]</span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a><span class="fu">str</span>(df)</span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a><span class="co">#&gt; &#39;data.frame&#39;:    10000 obs. of  2 variables:</span></span>
+<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a><span class="co">#&gt;  $ id  : int  1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a><span class="co">#&gt;  $ code: chr  &quot;A671&quot; &quot;B170&quot; &quot;C33&quot; &quot;C33&quot; ...</span></span></code></pre></div>
 <p>By default, the <code>sample_diag()</code> function simulates ICD-10
 data; it is however possible to simulate ICD-9 codes too, as we will see
 later on.</p>
@@ -370,45 +370,45 @@ later on.</p>
 <p>The <code>comorbidity()</code> function can be used to apply mapping
 algorithms to a dataset. Here, for instance, we use the Quan et
 al. (2005) version of the Charlson Comorbidity Index:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>charlson_df <span class="ot">&lt;-</span> <span class="fu">comorbidity</span>(</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> df,</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="st">&quot;id&quot;</span>,</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">code =</span> <span class="st">&quot;code&quot;</span>,</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">map =</span> <span class="st">&quot;charlson_icd10_quan&quot;</span>,</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">assign0 =</span> <span class="cn">FALSE</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(charlson_df)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Classes &#39;comorbidity&#39; and &#39;data.frame&#39;:  100 obs. of  18 variables:</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ id      : int  1 2 3 4 5 6 7 8 9 10 ...</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ mi      : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ chf     : int  0 1 1 0 0 1 1 0 1 1 ...</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ pvd     : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ cevd    : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ dementia: int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ cpd     : int  1 1 1 1 0 0 1 1 1 1 ...</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ rheumd  : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ pud     : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ mld     : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ diab    : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ diabwc  : int  1 0 1 1 1 1 1 1 1 1 ...</span></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ hp      : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ rend    : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ canc    : int  1 1 1 1 1 1 1 1 1 1 ...</span></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ msld    : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ metacanc: int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ aids    : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  - attr(*, &quot;variable.labels&quot;)= chr [1:18] &quot;ID&quot; &quot;Myocardial infarction&quot; &quot;Congestive heart failure&quot; &quot;Peripheral vascular disease&quot; ...</span></span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  - attr(*, &quot;map&quot;)= chr &quot;charlson_icd10_quan&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>charlson_df <span class="ot">&lt;-</span> <span class="fu">comorbidity</span>(</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>  <span class="at">x =</span> df,</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>  <span class="at">id =</span> <span class="st">&quot;id&quot;</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>  <span class="at">code =</span> <span class="st">&quot;code&quot;</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>  <span class="at">map =</span> <span class="st">&quot;charlson_icd10_quan&quot;</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>  <span class="at">assign0 =</span> <span class="cn">FALSE</span></span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>)</span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a><span class="fu">str</span>(charlson_df)</span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a><span class="co">#&gt; Classes &#39;comorbidity&#39; and &#39;data.frame&#39;:  100 obs. of  18 variables:</span></span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a><span class="co">#&gt;  $ id      : int  1 2 3 4 5 6 7 8 9 10 ...</span></span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a><span class="co">#&gt;  $ mi      : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
+<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a><span class="co">#&gt;  $ chf     : int  0 1 1 0 0 1 1 0 1 1 ...</span></span>
+<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a><span class="co">#&gt;  $ pvd     : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
+<span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a><span class="co">#&gt;  $ cevd    : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
+<span id="cb2-15"><a href="#cb2-15" tabindex="-1"></a><span class="co">#&gt;  $ dementia: int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
+<span id="cb2-16"><a href="#cb2-16" tabindex="-1"></a><span class="co">#&gt;  $ cpd     : int  1 1 1 1 0 0 1 1 1 1 ...</span></span>
+<span id="cb2-17"><a href="#cb2-17" tabindex="-1"></a><span class="co">#&gt;  $ rheumd  : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
+<span id="cb2-18"><a href="#cb2-18" tabindex="-1"></a><span class="co">#&gt;  $ pud     : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
+<span id="cb2-19"><a href="#cb2-19" tabindex="-1"></a><span class="co">#&gt;  $ mld     : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
+<span id="cb2-20"><a href="#cb2-20" tabindex="-1"></a><span class="co">#&gt;  $ diab    : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
+<span id="cb2-21"><a href="#cb2-21" tabindex="-1"></a><span class="co">#&gt;  $ diabwc  : int  1 0 1 1 1 1 1 1 1 1 ...</span></span>
+<span id="cb2-22"><a href="#cb2-22" tabindex="-1"></a><span class="co">#&gt;  $ hp      : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
+<span id="cb2-23"><a href="#cb2-23" tabindex="-1"></a><span class="co">#&gt;  $ rend    : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
+<span id="cb2-24"><a href="#cb2-24" tabindex="-1"></a><span class="co">#&gt;  $ canc    : int  1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span id="cb2-25"><a href="#cb2-25" tabindex="-1"></a><span class="co">#&gt;  $ msld    : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
+<span id="cb2-26"><a href="#cb2-26" tabindex="-1"></a><span class="co">#&gt;  $ metacanc: int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
+<span id="cb2-27"><a href="#cb2-27" tabindex="-1"></a><span class="co">#&gt;  $ aids    : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
+<span id="cb2-28"><a href="#cb2-28" tabindex="-1"></a><span class="co">#&gt;  - attr(*, &quot;variable.labels&quot;)= chr [1:18] &quot;ID&quot; &quot;Myocardial infarction&quot; &quot;Congestive heart failure&quot; &quot;Peripheral vascular disease&quot; ...</span></span>
+<span id="cb2-29"><a href="#cb2-29" tabindex="-1"></a><span class="co">#&gt;  - attr(*, &quot;map&quot;)= chr &quot;charlson_icd10_quan&quot;</span></span></code></pre></div>
 <p>The resulting data frame has a row per subject, a column for IDs, and
 a column for each condition included in a given score (e.g. 17
 conditions for the Charlson score).</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(df<span class="sc">$</span>id)) <span class="sc">==</span> <span class="fu">nrow</span>(charlson_df)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(df<span class="sc">$</span>id)) <span class="sc">==</span> <span class="fu">nrow</span>(charlson_df)</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
 <p>The different columns are also labelled for compatibility with the
 RStudio viewer, see e.g. <code>View(charlson_df)</code> after running
 the code above on your computer.</p>
 <p>To see all supported mapping algorithms, please see the vignette:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vignette</span>(<span class="st">&quot;B-comorbidity-scores&quot;</span>, <span class="at">package =</span> <span class="st">&quot;comorbidity&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">vignette</span>(<span class="st">&quot;B-comorbidity-scores&quot;</span>, <span class="at">package =</span> <span class="st">&quot;comorbidity&quot;</span>)</span></code></pre></div>
 </div>
 <div id="comorbidity-scores" class="section level1">
 <h1>Comorbidity Scores</h1>
@@ -416,22 +416,22 @@ the code above on your computer.</p>
 used to calculate comorbidity scores using the <code>score()</code>
 function. Say we want to calculate the Charlson comorbidity score,
 weighted using the Quan et al. (2011) weights:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>quan_cci <span class="ot">&lt;-</span> <span class="fu">score</span>(<span class="at">x =</span> charlson_df, <span class="at">weights =</span> <span class="st">&quot;quan&quot;</span>, <span class="at">assign0 =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(quan_cci)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; quan_cci</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2  3  4  5  6 </span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 18 20 30 25</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>quan_cci <span class="ot">&lt;-</span> <span class="fu">score</span>(<span class="at">x =</span> charlson_df, <span class="at">weights =</span> <span class="st">&quot;quan&quot;</span>, <span class="at">assign0 =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="fu">table</span>(quan_cci)</span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="co">#&gt; quan_cci</span></span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="co">#&gt;  2  3  4  5  6 </span></span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a><span class="co">#&gt;  7 18 20 30 25</span></span></code></pre></div>
 <p>This returns a single value per subject:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(quan_cci) <span class="sc">==</span> <span class="fu">nrow</span>(charlson_df)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">length</span>(quan_cci) <span class="sc">==</span> <span class="fu">nrow</span>(charlson_df)</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
 <p>If a pure combination of conditions is required (e.g. an unweighted
 score), pass the <code>NULL</code> value to the <code>weights</code>
 argument of the <code>score()</code> function:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>unw_cci <span class="ot">&lt;-</span> <span class="fu">score</span>(<span class="at">x =</span> charlson_df, <span class="at">weights =</span> <span class="cn">NULL</span>, <span class="at">assign0 =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(unw_cci)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; unw_cci</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1  2  3  4 </span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 25 43 25</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>unw_cci <span class="ot">&lt;-</span> <span class="fu">score</span>(<span class="at">x =</span> charlson_df, <span class="at">weights =</span> <span class="cn">NULL</span>, <span class="at">assign0 =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="fu">table</span>(unw_cci)</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="co">#&gt; unw_cci</span></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="co">#&gt;  1  2  3  4 </span></span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="co">#&gt;  7 25 43 25</span></span></code></pre></div>
 <p>Once again, available weighting systems/algorithms are described in
 the same vignette that was mentioned above.</p>
 </div>

@@ -3,12 +3,11 @@
 
 # The {comorbidity} Package: Computing Comorbidity Scores <img src="man/figures/hex.png" width = "150" align="right" />
 
-Last updated: 2022-09-26 16:24:49
+Last updated: 2023-05-01 18:10:22.296923
 
 <!-- badges: start -->
 
-[![R build
-status](https://github.com/ellessenne/comorbidity/workflows/R-CMD-check/badge.svg)](https://github.com/ellessenne/comorbidity/actions)
+[![R-CMD-check](https://github.com/ellessenne/comorbidity/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ellessenne/comorbidity/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
 coverage](https://codecov.io/gh/ellessenne/comorbidity/branch/master/graph/badge.svg)](https://app.codecov.io/gh/ellessenne/comorbidity?branch=master)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/comorbidity)](https://cran.r-project.org/package=comorbidity)
@@ -271,8 +270,7 @@ If you find `comorbidity` useful, please cite it in your publications:
 
 ``` r
 citation("comorbidity")
-## 
-## To cite the comorbidity package in publications, please use:
+## To cite package 'comorbidity' in publications use:
 ## 
 ##   Gasparini, (2018). comorbidity: An R package for computing comorbidity scores. Journal
 ##   of Open Source Software, 3(23), 648, https://doi.org/10.21105/joss.00648
