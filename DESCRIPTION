@@ -1,5 +1,5 @@
 Package: comorbidity
-Version: 1.0.7
+Version: 1.1.0
 Title: Computing Comorbidity Scores
 Description: Computing comorbidity indices and scores such as the weighted Charlson
   score (Charlson, 1987 <doi:10.1016/0021-9681(87)90171-8>) and the Elixhauser
@@ -34,28 +34,32 @@ Authors@R:
              family = "Teo",
              role = "ctb",
              email = "ed_teo8@yahoo.com.sg",
-             comment = c(ORCID = "0000-0003-3936-4082")))
+             comment = c(ORCID = "0000-0003-3936-4082")),
+      person(given = "Desi",
+             family = "Quintans",
+             role = "ctb"))
 URL: https://ellessenne.github.io/comorbidity/,
-        https://github.com/ellessenne/comorbidity/
+        https://github.com/ellessenne/comorbidity
 BugReports: https://github.com/ellessenne/comorbidity/issues
 License: GPL (>= 3)
 Depends: R (>= 2.10)
 Imports: checkmate, data.table, stats, stringi, utils
 Suggests: covr, knitr, rmarkdown, testthat
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2
 Encoding: UTF-8
 LazyData: true
 ByteCompile: true
 VignetteBuilder: knitr
-Language: en_GB
+Language: en-GB
 NeedsCompilation: no
-Packaged: 2023-05-01 16:32:23 UTC; ellessenne
+Packaged: 2024-07-16 06:30:53 UTC; ellessenne
 Author: Alessandro Gasparini [aut, cre]
     (<https://orcid.org/0000-0002-8319-7624>),
   Hojjat Salmasian [ctb] (ICD-9-CM scores),
   Jonathan Williman [ctb] (<https://orcid.org/0000-0001-5080-4435>),
   Sing Yi Chia [ctb] (<https://orcid.org/0000-0002-7591-3141>),
-  Edmund Teo [ctb] (<https://orcid.org/0000-0003-3936-4082>)
+  Edmund Teo [ctb] (<https://orcid.org/0000-0003-3936-4082>),
+  Desi Quintans [ctb]
 Maintainer: Alessandro Gasparini <alessandro@ellessenne.xyz>
 Repository: CRAN
-Date/Publication: 2023-05-01 17:10:06 UTC
+Date/Publication: 2024-07-16 06:40:02 UTC

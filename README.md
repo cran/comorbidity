@@ -1,9 +1,9 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# The {comorbidity} Package: Computing Comorbidity Scores <img src="man/figures/hex.png" width = "150" align="right" />
+# The {comorbidity} Package: Computing Comorbidity Scores in R <img src="man/figures/hex.png" width = "150" align="right" alt="Hex sticker of the {comorbidity} R package."/>
 
-Last updated: 2023-05-01 18:10:22.296923
+Last updated: 2024-07-13 21:12:35.086616
 
 <!-- badges: start -->
 
@@ -302,9 +302,30 @@ vignette("A-introduction", package = "comorbidity")
 vignette("B-comorbidity-scores", package = "comorbidity")
 ```
 
+The list of available algorithms can be printed interactively using the
+`available_algorithms()` function:
+
+``` r
+available_algorithms()
+## Supported comorbidity mapping algorithms:
+##  * charlson_icd9_quan 
+##  * charlson_icd10_quan 
+##  * charlson_icd10_se 
+##  * charlson_icd10_am 
+##  * charlson_icd10_am_ucodes 
+##  * elixhauser_icd9_quan 
+##  * elixhauser_icd10_quan 
+## 
+## Supported scoring weights algorithms:
+##  * For charlson_icd9_quan: charlson, quan 
+##  * For charlson_icd10_quan: charlson, quan 
+##  * For charlson_icd10_se: charlson, quan 
+##  * For charlson_icd10_am: charlson, quan 
+##  * For charlson_icd10_am_ucodes: charlson, quan 
+##  * For elixhauser_icd9_quan: vw, swiss 
+##  * For elixhauser_icd10_quan: vw, swiss
+```
+
 ## Copyright
 
-The icon for the hex sticker was made by
-[monkik](https://www.flaticon.com/authors/monkik) from
-[www.flaticon.com](https://www.flaticon.com), and is licensed by
-[Creative Commons BY 3.0](https://creativecommons.org/licenses/by/3.0).
+The icon for the hex sticker was made by Freepik from \<flaticon.com\>.
